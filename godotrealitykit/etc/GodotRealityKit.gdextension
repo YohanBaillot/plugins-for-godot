@@ -1,0 +1,32 @@
+[configuration]
+
+entry_symbol = "gdrk_extension_init"
+compatibility_minimum = "4.1"
+initialize = true
+
+[libraries]
+
+macos.editor = "res://addons/GodotRealityKit/macos.editor/GodotRealityKit.framework"
+
+macos.debug = "res://addons/GodotRealityKit/macos.template_debug/GodotRealityKit.framework"
+macos.release = "res://addons/GodotRealityKit/macos.template_release/GodotRealityKit.framework"
+visionos.debug = "res://addons/GodotRealityKit/visionos.template_debug/GodotRealityKit.framework"
+visionos.release = "res://addons/GodotRealityKit/visionos.template_release/GodotRealityKit.framework"
+
+[dependencies]
+
+macos.debug = {
+    "res://addons/GodotRealityKit/macos.template_debug/GodotRealityKit.framework" : "Contents/Frameworks"
+}
+
+macos.release = {
+    "res://addons/GodotRealityKit/macos.template_release/GodotRealityKit.framework" : "Contents/Frameworks"
+}
+
+visionos.debug = {
+    "res://addons/GodotRealityKit/visionos.template_debug/GodotRealityKit.framework": ""
+}
+
+visionos.release = {
+    "res://addons/GodotRealityKit/visionos.template_release/GodotRealityKit.framework": ""
+}

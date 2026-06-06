@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="RealityVolumeCamera3D" inherits="Node3D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Defines a cube that fits into a volumetric window on visionOS.
+	</brief_description>
+	<description>
+		On visionOS, the camera is controlled by the OS rather than the game. However
+		you can still translate/rotate/scale the scene to emulate a video game camera.
+
+		The RealityVolumeCamera3D represents a cube volume that you can place anywhere in your scene;
+		you can also change its transform every frame if you want a dynamic camera.
+
+		The GodotRealityKit extension will apply the inverse transform of the camera to your scene,
+		so that this cube fits into its volumetric window on visionOS.
+
+		The RealityVolumeCamera3D is only used in windowed mode on visionOS; in immersive mode, use an
+		XROrigin instead.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_camera_projection" qualifiers="const">
+			<return type="int" enum="Camera3D.ProjectionType" />
+			<description>
+				Returns the camera projection type. Always returns [constant Camera3D.PROJECTION_ORTHOGONAL].
+			</description>
+		</method>
+		<method name="get_camera_transform" qualifiers="const">
+			<return type="Transform3D" />
+			<description>
+				Returns the global transform of the internal camera used for rendering.
+			</description>
+		</method>
+		<method name="get_frustum" qualifiers="const">
+			<return type="Plane[]" />
+			<description>
+				Returns the camera frustum planes in world space.
+			</description>
+		</method>
+		<method name="is_position_behind" qualifiers="const">
+			<return type="bool" />
+			<param index="0" name="world_point" type="Vector3" />
+			<description>
+				Returns [code]true[/code] if [param world_point] is behind the camera.
+			</description>
+		</method>
+		<method name="is_position_in_frustum" qualifiers="const">
+			<return type="bool" />
+			<param index="0" name="world_point" type="Vector3" />
+			<description>
+				Returns [code]true[/code] if [param world_point] is inside the camera frustum.
+			</description>
+		</method>
+		<method name="make_current">
+			<return type="void" />
+			<description>
+				Makes this volume camera the active camera for the current viewport.
+			</description>
+		</method>
+		<method name="project_local_ray_normal" qualifiers="const">
+			<return type="Vector3" />
+			<param index="0" name="screen_point" type="Vector2" />
+			<description>
+				Returns the local-space ray direction for an orthographic projection. Always returns [code]Vector3(0, 0, -1)[/code].
+			</description>
+		</method>
+		<method name="project_position" qualifiers="const">
+			<return type="Vector3" />
+			<param index="0" name="screen_point" type="Vector2" />
+			<param index="1" name="z_depth" type="float" />
+			<description>
+				Returns the world-space position for a given [param screen_point] at distance [param z_depth] from the camera.
+			</description>
+		</method>
+		<method name="project_ray_normal" qualifiers="const">
+			<return type="Vector3" />
+			<param index="0" name="screen_point" type="Vector2" />
+			<description>
+				Returns the world-space ray direction for [param screen_point]. For orthographic projection this is the camera's forward direction.
+			</description>
+		</method>
+		<method name="project_ray_origin" qualifiers="const">
+			<return type="Vector3" />
+			<param index="0" name="screen_point" type="Vector2" />
+			<description>
+				Returns the world-space ray origin for [param screen_point].
+			</description>
+		</method>
+		<method name="unproject_position" qualifiers="const">
+			<return type="Vector2" />
+			<param index="0" name="world_point" type="Vector3" />
+			<description>
+				Returns the screen-space position for a given [param world_point].
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="keep_aspect" type="int" setter="set_keep_aspect" getter="get_keep_aspect" enum="RealityVolumeCamera3D.KeepAspect" default="2">
+			Which axis to preserve when the viewport aspect ratio doesn't match the volume.
+		</member>
+		<member name="preview_camera_enabled" type="bool" setter="set_preview_camera_enabled" getter="get_preview_camera_enabled" default="true">
+			If [code]true[/code], a preview [Camera3D] is generated so the editor viewport can preview the volume camera's view.
+		</member>
+		<member name="size" type="float" setter="set_size" getter="get_size" default="5.0">
+			Size of the volume relative to the Node itself. There is a gizmo displaying the cube
+			in the editor, so that you can preview what is inside and outside the volume.
+		</member>
+	</members>
+	<constants>
+		<constant name="KEEP_WIDTH" value="0" enum="KeepAspect">
+			Preserve the volume's width when adapting to a different aspect ratio.
+		</constant>
+		<constant name="KEEP_HEIGHT" value="1" enum="KeepAspect">
+			Preserve the volume's height when adapting to a different aspect ratio.
+		</constant>
+		<constant name="KEEP_DEPTH" value="2" enum="KeepAspect">
+			Preserve the volume's depth when adapting to a different aspect ratio.
+		</constant>
+	</constants>
+</class>

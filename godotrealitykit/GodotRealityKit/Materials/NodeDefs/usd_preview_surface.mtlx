@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<materialx version="1.38">
+  <!-- ======================================================================== -->
+  <!-- USD Preview Surface node definitions                                     -->
+  <!-- ======================================================================== -->
+  <!-- Node: UsdPreviewSurface -->
+  <nodedef name="ND_UsdPreviewSurface_surfaceshader" node="UsdPreviewSurface" nodegroup="pbr" doc="USD preview surface shader" version="2.3" isdefaultversion="true">
+    <input name="diffuseColor" type="color3" value="0.18, 0.18, 0.18" />
+    <input name="emissiveColor" type="color3" value="0, 0, 0" />
+    <input name="useSpecularWorkflow" type="integer" value="0" />
+    <input name="specularColor" type="color3" value="0, 0, 0" />
+    <input name="metallic" type="float" value="0" />
+    <input name="roughness" type="float" value="0.5" />
+    <input name="clearcoat" type="float" value="0" />
+    <input name="clearcoatRoughness" type="float" value="0.01" />
+    <input name="opacity" type="float" value="1" />
+    <input name="opacityThreshold" type="float" value="0" />
+    <input name="ior" type="float" value="1.5" />
+    <input name="normal" type="vector3" value="0, 0, 1" />
+    <input name="displacement" type="float" value="0" />
+    <input name="occlusion" type="float" value="1" />
+    <output name="out" type="surfaceshader" />
+  </nodedef>
+  <!-- Node: UsdUVTexture -->
+  <nodedef name="ND_UsdUVTexture" node="UsdUVTexture">
+    <input name="file" type="filename" uniform="true" />
+    <input name="st" type="vector2" defaultgeomprop="UV0" />
+    <input name="wrapS" type="string" value="periodic" enum="black,clamp,periodic" uniform="true" />
+    <input name="wrapT" type="string" value="periodic" enum="black,clamp,periodic" uniform="true" />
+    <input name="fallback" type="color4" value="0, 0, 0, 1" />
+    <input name="scale" type="color4" value="1, 1, 1, 1" uniform="true" />
+    <input name="bias" type="color4" value="0, 0, 0, 0" uniform="true" />
+    <output name="r" type="float" />
+    <output name="g" type="float" />
+    <output name="b" type="float" />
+    <output name="a" type="float" />
+    <output name="rgb" type="color3" />
+    <output name="rgba" type="color4" />
+  </nodedef>
+  <!-- Node: UsdPrimvarReader -->
+  <nodedef name="ND_UsdPrimvarReader_integer" node="UsdPrimvarReader">
+    <input name="varname" type="string" uniform="true" />
+    <input name="fallback" type="integer" value="0" />
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_UsdPrimvarReader_boolean" node="UsdPrimvarReader">
+    <input name="varname" type="string" uniform="true" />
+    <input name="fallback" type="boolean" value="false" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_UsdPrimvarReader_string" node="UsdPrimvarReader">
+    <input name="varname" type="string" uniform="true" />
+    <input name="fallback" type="string" value="" />
+    <output name="out" type="string" />
+  </nodedef>
+  <nodedef name="ND_UsdPrimvarReader_float" node="UsdPrimvarReader">
+    <input name="varname" type="string" uniform="true" />
+    <input name="fallback" type="float" value="0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_UsdPrimvarReader_vector2" node="UsdPrimvarReader">
+    <input name="varname" type="string" uniform="true" />
+    <input name="fallback" type="vector2" value="0, 0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_UsdPrimvarReader_vector3" node="UsdPrimvarReader">
+    <input name="varname" type="string" uniform="true" />
+    <input name="fallback" type="vector3" value="0, 0, 0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_UsdPrimvarReader_vector4" node="UsdPrimvarReader">
+    <input name="varname" type="string" uniform="true" />
+    <input name="fallback" type="vector4" value="0, 0, 0, 0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <!-- TODO: Getting primvar of matrix type is not supported in MaterialX standard library.
+  <nodedef name="ND_UsdPrimvarReader_matrix44" node="UsdPrimvarReader">
+    <input name="varname" type="string" />
+    <input name="fallback" type="matrix44" value="1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1" />
+    <output name="out" type="matrix44" />
+  </nodedef>
+  -->
+  <!-- Node: UsdTransform2d -->
+  <nodedef name="ND_UsdTransform2d" node="UsdTransform2d">
+    <input name="in" type="vector2" />
+    <input name="rotation" type="float" value="0" />
+    <input name="scale" type="vector2" value="1, 1" />
+    <input name="translation" type="vector2" value="0, 0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <!-- ======================================================================== -->
+  <!-- USD Preview Surface nodegraph implementations                            -->
+  <!-- ======================================================================== -->
+  <!-- Node: UsdUVTexture -->
+  <!-- Node: UsdPrimvarReader -->
+  <!-- Node: UsdTransform2d -->
+</materialx>

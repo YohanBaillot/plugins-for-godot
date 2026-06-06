@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<materialx version="1.38">
+  <!--
+    TM & (c) 2018 Lucasfilm Entertainment Company Ltd. and Lucasfilm Ltd.
+    All rights reserved.  See LICENSE.txt for license.
+
+    Nodegraph implementations for Supplemental Nodes included in the MaterialX specification.
+  -->
+  <!-- ======================================================================== -->
+  <!-- Supplemental Texture nodes                                               -->
+  <!-- ======================================================================== -->
+  <!--
+    <tiledimage>
+  -->
+  <!--
+    <triplanarprojection>
+    Samples data from three images, or layers within multi-layer images, and projects a tiled
+    representation of the images along each of the three respective coordinate axes, computing
+    a weighted blend of the three samples using the geometric normal.
+  -->
+  <!-- ======================================================================== -->
+  <!-- Procedural nodes                                                         -->
+  <!-- ======================================================================== -->
+  <!--
+    <ramp4>
+    A 4-corner bilinear value ramp.
+  -->
+  <!-- ======================================================================== -->
+  <!-- Geometric nodes                                                          -->
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+  <!-- Global nodes                                                             -->
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+  <!-- Application nodes                                                        -->
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+  <!-- Math nodes                                                               -->
+  <!-- ======================================================================== -->
+  <!--
+    Node: <place2d>
+    Transform incoming UV texture coordinates for 2D texture placement.
+  -->
+  <!-- ======================================================================== -->
+  <!-- Adjustment nodes                                                         -->
+  <!-- ======================================================================== -->
+  <!--
+    Node: <contrast>
+    Increase or decrease contrast of a float/color value using a linear slope multiplier.
+  -->
+  <!--
+    Node: <range>
+    Remap a value from one range of float/color/vector values to another, optionally
+    applying a gamma correction in the middle, and optionally clamping output values.
+  -->
+  <!--
+    Node: <hsvadjust>
+    Adjust the hue, saturation and value of an RGB color by converting the input color
+    to HSV, adding amount.x to the hue, multiplying the saturation by amount.y,
+    multiplying the value by amount.z, then converting back to RGB.
+  -->
+  <!--
+    Node: <saturate>
+    Adjust the saturation of a color using a linear interpolation between the incoming
+    color and the grayscale luminance of the input computed using the provided luma
+    coefficients; the alpha channel will be unchanged if present.
+  -->
+  <!-- ======================================================================== -->
+  <!-- Compositing nodes                                                        -->
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+  <!-- Conditional nodes                                                        -->
+  <!-- ======================================================================== -->
+  <!-- ======================================================================== -->
+  <!-- Channel nodes                                                            -->
+  <!-- ======================================================================== -->
+  <!--
+    Node: <extract>
+    Extract a single channel from a colorN or vectorN stream, outputting a float.
+  -->
+  <!--
+    Nodes: <separate2>, <separate3>, <separate4>
+    Output each of the channels of a color/vector stream as a separate float output.
+  -->
+  <!-- ======================================================================== -->
+  <!-- Convolution nodes                                                        -->
+  <!-- ======================================================================== -->
+</materialx>

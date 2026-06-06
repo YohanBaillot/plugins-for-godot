@@ -1,0 +1,57 @@
+//===----------------------------------------------------------------------===//
+// Copyright © 2026 Apple Inc.
+//
+// Licensed under the MIT license (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// LICENSE
+//
+//===----------------------------------------------------------------------===//
+
+#pragma once
+
+#include "../resource_loaders.h"
+#include "node_loader.h"
+
+#include <godot_cpp/classes/sprite3d.hpp>
+
+namespace gdrk {
+
+class SpriteLoader : public NodeLoader<SpriteLoader, godot::Sprite3D> {
+	NODE_LOADER(SpriteLoader, NodeLoader, godot::Sprite3D);
+
+public:
+	static constexpr bool receives_hover_effects = true;
+
+	void _reserve(uint32_t p_capacity) {
+		Base::_reserve(p_capacity);
+		sprite_frames.resize(p_capacity);
+		dep_states.resize(p_capacity);
+	}
+
+	uint32_t add(godot::Sprite3D *p_node) {
+		const uint32_t idx = Base::add(p_node);
+		sprite_frames[idx] = 0;
+		dep_states[idx] = DependencyState();
+		return idx;
+	}
+
+	void update_deps(ResourceLoaderSet &p_resource_loaders);
+
+	void update(const ResourceLoaderSet &p_resource_loaders);
+
+private:
+	struct DependencyState {
+		uint32_t mesh_hash = 0;
+		uint32_t material_hash = 0;
+	};
+
+	MeshDependencyList mesh_deps;
+	DependencyList material_deps;
+
+	godot::LocalVector<int32_t> sprite_frames;
+	godot::LocalVector<DependencyState> dep_states;
+};
+
+} //namespace gdrk

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="MaterialEditorExportPlugin" inherits="EditorExportPlugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Internal export plugin to cache the generated RealityKit materials.
+	</brief_description>
+	<description>
+		This object is not meant to be used directly.
+	</description>
+	<tutorials>
+	</tutorials>
+</class>

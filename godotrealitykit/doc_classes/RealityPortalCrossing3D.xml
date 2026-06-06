@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="RealityPortalCrossing3D" inherits="Node3D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Handles the rendering of its parent Node when crossing portals.
+	</brief_description>
+	<description>
+		This maps to RealityKit's [url=https://developer.apple.com/documentation/RealityKit/PortalCrossingComponent]PortalCrossingComponent[/url].
+
+		Add a [b]RealityPortalCrossing3D[/b] under a Node when it crosses the shape of a [b]RealityPortalMeshInstance3D[/b].
+	</description>
+	<tutorials>
+	</tutorials>
+</class>

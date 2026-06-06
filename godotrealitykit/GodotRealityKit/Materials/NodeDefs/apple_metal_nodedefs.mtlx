@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<materialx version="1.38">
+  <nodedef name="ND_MTL_mad24_integer" node="MTL_mad24" nodegroup="realitykit">
+    <input name="x" type="integer" value="0" />
+    <input name="y" type="integer" value="0" />
+    <input name="z" type="integer" value="0" />
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_MTL_mul24_integer" node="MTL_mul24" nodegroup="realitykit">
+    <input name="x" type="integer" value="0" />
+    <input name="y" type="integer" value="0" />
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_MTL_isfinite_half" node="MTL_isfinite" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isinf_half" node="MTL_isinf" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isnan_half" node="MTL_isnan" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isnormal_half" node="MTL_isnormal" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isordered_half" node="MTL_isordered" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="1.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isunordered_half" node="MTL_isunordered" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="1.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_signbit_half" node="MTL_signbit" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_select_half" node="MTL_select" nodegroup="conditional">
+    <input name="a" type="half" value="0.0" />
+    <input name="b" type="half" value="1.0" />
+    <input name="c" type="boolean" value="false" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_isfinite_float" node="MTL_isfinite" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isinf_float" node="MTL_isinf" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isnan_float" node="MTL_isnan" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isnormal_float" node="MTL_isnormal" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isordered_float" node="MTL_isordered" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="1.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_isunordered_float" node="MTL_isunordered" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="1.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_signbit_float" node="MTL_signbit" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_MTL_select_float" node="MTL_select" nodegroup="conditional">
+    <input name="a" type="float" value="0.0" />
+    <input name="b" type="float" value="1.0" />
+    <input name="c" type="boolean" value="false" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_select_integer" node="MTL_select" nodegroup="conditional">
+    <input name="a" type="integer" value="0" />
+    <input name="b" type="integer" value="1" />
+    <input name="c" type="boolean" value="false" />
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_MTL_abs_integer" node="MTL_abs" nodegroup="math">
+    <input name="x" type="integer" value="0" />
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_MTL_max_integer" node="MTL_max" nodegroup="math">
+    <input name="x" type="integer" value="0" />
+    <input name="y" type="integer" value="0" />
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_integer" node="MTL_median3" nodegroup="math">
+    <input name="x" type="integer" value="0" />
+    <input name="y" type="integer" value="0" />
+    <input name="z" type="integer" value="0" />
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_MTL_min_integer" node="MTL_min" nodegroup="math">
+    <input name="x" type="integer" value="0" />
+    <input name="y" type="integer" value="0" />
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_MTL_acosh_half" node="MTL_acosh" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_acosh_float" node="MTL_acosh" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_acosh_half2" node="MTL_acosh" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_acosh_vector2" node="MTL_acosh" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_acosh_half3" node="MTL_acosh" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_acosh_vector3" node="MTL_acosh" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_acosh_half4" node="MTL_acosh" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_acosh_vector4" node="MTL_acosh" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_asinh_half" node="MTL_asinh" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_asinh_float" node="MTL_asinh" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_asinh_half2" node="MTL_asinh" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_asinh_vector2" node="MTL_asinh" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_asinh_half3" node="MTL_asinh" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_asinh_vector3" node="MTL_asinh" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_asinh_half4" node="MTL_asinh" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_asinh_vector4" node="MTL_asinh" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_atan_half" node="MTL_atan" nodegroup="math">
+    <input name="y_over_x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_atan_float" node="MTL_atan" nodegroup="math">
+    <input name="y_over_x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_atan_half2" node="MTL_atan" nodegroup="math">
+    <input name="y_over_x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_atan_vector2" node="MTL_atan" nodegroup="math">
+    <input name="y_over_x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_atan_half3" node="MTL_atan" nodegroup="math">
+    <input name="y_over_x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_atan_vector3" node="MTL_atan" nodegroup="math">
+    <input name="y_over_x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_atan_half4" node="MTL_atan" nodegroup="math">
+    <input name="y_over_x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_atan_vector4" node="MTL_atan" nodegroup="math">
+    <input name="y_over_x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_atanh_half" node="MTL_atanh" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_atanh_float" node="MTL_atanh" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_atanh_half2" node="MTL_atanh" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_atanh_vector2" node="MTL_atanh" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_atanh_half3" node="MTL_atanh" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_atanh_vector3" node="MTL_atanh" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_atanh_half4" node="MTL_atanh" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_atanh_vector4" node="MTL_atanh" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_copysign_half" node="MTL_copysign" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_copysign_float" node="MTL_copysign" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_copysign_half2" node="MTL_copysign" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_copysign_vector2" node="MTL_copysign" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_copysign_half3" node="MTL_copysign" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_copysign_vector3" node="MTL_copysign" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_copysign_half4" node="MTL_copysign" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_copysign_vector4" node="MTL_copysign" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_cosh_half" node="MTL_cosh" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_cosh_float" node="MTL_cosh" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_cosh_half2" node="MTL_cosh" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_cosh_vector2" node="MTL_cosh" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_cosh_half3" node="MTL_cosh" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_cosh_vector3" node="MTL_cosh" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_cosh_half4" node="MTL_cosh" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_cosh_vector4" node="MTL_cosh" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_cospi_half" node="MTL_cospi" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_cospi_float" node="MTL_cospi" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_cospi_half2" node="MTL_cospi" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_cospi_vector2" node="MTL_cospi" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_cospi_half3" node="MTL_cospi" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_cospi_vector3" node="MTL_cospi" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_cospi_half4" node="MTL_cospi" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_cospi_vector4" node="MTL_cospi" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp2_half" node="MTL_exp2" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp2_float" node="MTL_exp2" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp2_half2" node="MTL_exp2" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp2_vector2" node="MTL_exp2" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp2_half3" node="MTL_exp2" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp2_vector3" node="MTL_exp2" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp2_half4" node="MTL_exp2" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp2_vector4" node="MTL_exp2" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp10_half" node="MTL_exp10" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp10_float" node="MTL_exp10" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp10_half2" node="MTL_exp10" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp10_vector2" node="MTL_exp10" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp10_half3" node="MTL_exp10" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp10_vector3" node="MTL_exp10" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp10_half4" node="MTL_exp10" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_exp10_vector4" node="MTL_exp10" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_fdim_half" node="MTL_fdim" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_fdim_float" node="MTL_fdim" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_fdim_half2" node="MTL_fdim" nodegroup="realitykit">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_fdim_vector2" node="MTL_fdim" nodegroup="realitykit">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_fdim_half3" node="MTL_fdim" nodegroup="realitykit">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_fdim_vector3" node="MTL_fdim" nodegroup="realitykit">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_fdim_half4" node="MTL_fdim" nodegroup="realitykit">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_fdim_vector4" node="MTL_fdim" nodegroup="realitykit">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_fma_half" node="MTL_fma" nodegroup="math">
+    <input name="a" type="half" value="0.0" />
+    <input name="b" type="half" value="0.0" />
+    <input name="c" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_fma_float" node="MTL_fma" nodegroup="math">
+    <input name="a" type="float" value="0.0" />
+    <input name="b" type="float" value="0.0" />
+    <input name="c" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_fma_half2" node="MTL_fma" nodegroup="math">
+    <input name="a" type="half2" value="0.0,0.0" />
+    <input name="b" type="half2" value="0.0,0.0" />
+    <input name="c" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_fma_vector2" node="MTL_fma" nodegroup="math">
+    <input name="a" type="vector2" value="0.0,0.0" />
+    <input name="b" type="vector2" value="0.0,0.0" />
+    <input name="c" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_fma_half3" node="MTL_fma" nodegroup="math">
+    <input name="a" type="half3" value="0.0,0.0,0.0" />
+    <input name="b" type="half3" value="0.0,0.0,0.0" />
+    <input name="c" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_fma_vector3" node="MTL_fma" nodegroup="math">
+    <input name="a" type="vector3" value="0.0,0.0,0.0" />
+    <input name="b" type="vector3" value="0.0,0.0,0.0" />
+    <input name="c" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_fma_half4" node="MTL_fma" nodegroup="math">
+    <input name="a" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="b" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="c" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_fma_vector4" node="MTL_fma" nodegroup="math">
+    <input name="a" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="b" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="c" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_max3_half" node="MTL_max3" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="0.0" />
+    <input name="z" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_max3_float" node="MTL_max3" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="0.0" />
+    <input name="z" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_max3_half2" node="MTL_max3" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="0.0,0.0" />
+    <input name="z" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_max3_vector2" node="MTL_max3" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="0.0,0.0" />
+    <input name="z" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_max3_half3" node="MTL_max3" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="0.0,0.0,0.0" />
+    <input name="z" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_max3_vector3" node="MTL_max3" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="0.0,0.0,0.0" />
+    <input name="z" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_max3_half4" node="MTL_max3" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="z" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_max3_vector4" node="MTL_max3" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="z" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_half" node="MTL_median3" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="0.0" />
+    <input name="z" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_float" node="MTL_median3" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="0.0" />
+    <input name="z" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_half2" node="MTL_median3" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="0.0,0.0" />
+    <input name="z" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_vector2" node="MTL_median3" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="0.0,0.0" />
+    <input name="z" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_half3" node="MTL_median3" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="0.0,0.0,0.0" />
+    <input name="z" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_vector3" node="MTL_median3" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="0.0,0.0,0.0" />
+    <input name="z" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_half4" node="MTL_median3" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="z" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_median3_vector4" node="MTL_median3" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="z" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_min3_half" node="MTL_min3" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="0.0" />
+    <input name="z" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_min3_float" node="MTL_min3" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="0.0" />
+    <input name="z" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_min3_half2" node="MTL_min3" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="0.0,0.0" />
+    <input name="z" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_min3_vector2" node="MTL_min3" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="0.0,0.0" />
+    <input name="z" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_min3_half3" node="MTL_min3" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="0.0,0.0,0.0" />
+    <input name="z" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_min3_vector3" node="MTL_min3" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="0.0,0.0,0.0" />
+    <input name="z" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_min3_half4" node="MTL_min3" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="z" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_min3_vector4" node="MTL_min3" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="z" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_fmod_half" node="MTL_fmod" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_fmod_float" node="MTL_fmod" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_fmod_half2" node="MTL_fmod" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_fmod_vector2" node="MTL_fmod" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_fmod_half3" node="MTL_fmod" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_fmod_vector3" node="MTL_fmod" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_fmod_half4" node="MTL_fmod" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_fmod_vector4" node="MTL_fmod" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_log2_half" node="MTL_log2" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_log2_float" node="MTL_log2" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_log2_half2" node="MTL_log2" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_log2_vector2" node="MTL_log2" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_log2_half3" node="MTL_log2" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_log2_vector3" node="MTL_log2" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_log2_half4" node="MTL_log2" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_log2_vector4" node="MTL_log2" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_log10_half" node="MTL_log10" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_log10_float" node="MTL_log10" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_log10_half2" node="MTL_log10" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_log10_vector2" node="MTL_log10" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_log10_half3" node="MTL_log10" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_log10_vector3" node="MTL_log10" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_log10_half4" node="MTL_log10" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_log10_vector4" node="MTL_log10" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_powr_half" node="MTL_powr" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <input name="y" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_powr_float" node="MTL_powr" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <input name="y" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_powr_half2" node="MTL_powr" nodegroup="realitykit">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_powr_vector2" node="MTL_powr" nodegroup="realitykit">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_powr_half3" node="MTL_powr" nodegroup="realitykit">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_powr_vector3" node="MTL_powr" nodegroup="realitykit">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_powr_half4" node="MTL_powr" nodegroup="realitykit">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_powr_vector4" node="MTL_powr" nodegroup="realitykit">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_rint_half" node="MTL_rint" nodegroup="realitykit">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_rint_float" node="MTL_rint" nodegroup="realitykit">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_rint_half2" node="MTL_rint" nodegroup="realitykit">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_rint_vector2" node="MTL_rint" nodegroup="realitykit">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_rint_half3" node="MTL_rint" nodegroup="realitykit">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_rint_vector3" node="MTL_rint" nodegroup="realitykit">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_rint_half4" node="MTL_rint" nodegroup="realitykit">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_rint_vector4" node="MTL_rint" nodegroup="realitykit">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_rsqrt_half" node="MTL_rsqrt" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_rsqrt_float" node="MTL_rsqrt" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_rsqrt_half2" node="MTL_rsqrt" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_rsqrt_vector2" node="MTL_rsqrt" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_rsqrt_half3" node="MTL_rsqrt" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_rsqrt_vector3" node="MTL_rsqrt" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_rsqrt_half4" node="MTL_rsqrt" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_rsqrt_vector4" node="MTL_rsqrt" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinh_half" node="MTL_sinh" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinh_float" node="MTL_sinh" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinh_half2" node="MTL_sinh" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinh_vector2" node="MTL_sinh" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinh_half3" node="MTL_sinh" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinh_vector3" node="MTL_sinh" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinh_half4" node="MTL_sinh" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinh_vector4" node="MTL_sinh" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinpi_half" node="MTL_sinpi" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinpi_float" node="MTL_sinpi" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinpi_half2" node="MTL_sinpi" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinpi_vector2" node="MTL_sinpi" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinpi_half3" node="MTL_sinpi" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinpi_vector3" node="MTL_sinpi" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinpi_half4" node="MTL_sinpi" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_sinpi_vector4" node="MTL_sinpi" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanh_half" node="MTL_tanh" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanh_float" node="MTL_tanh" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanh_half2" node="MTL_tanh" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanh_vector2" node="MTL_tanh" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanh_half3" node="MTL_tanh" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanh_vector3" node="MTL_tanh" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanh_half4" node="MTL_tanh" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanh_vector4" node="MTL_tanh" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanpi_half" node="MTL_tanpi" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanpi_float" node="MTL_tanpi" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanpi_half2" node="MTL_tanpi" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanpi_vector2" node="MTL_tanpi" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanpi_half3" node="MTL_tanpi" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanpi_vector3" node="MTL_tanpi" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanpi_half4" node="MTL_tanpi" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_tanpi_vector4" node="MTL_tanpi" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_trunc_half" node="MTL_trunc" nodegroup="math">
+    <input name="x" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_trunc_float" node="MTL_trunc" nodegroup="math">
+    <input name="x" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_trunc_half2" node="MTL_trunc" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_trunc_vector2" node="MTL_trunc" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_trunc_half3" node="MTL_trunc" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_trunc_vector3" node="MTL_trunc" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_trunc_half4" node="MTL_trunc" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_trunc_vector4" node="MTL_trunc" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_half2_half" node="MTL_distance" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_squared_half2_half" node="MTL_distance_squared" nodegroup="math">
+    <input name="x" type="half2" value="0.0,0.0" />
+    <input name="y" type="half2" value="1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_length_squared_half2_half" node="MTL_length_squared" nodegroup="math">
+    <input name="x" type="half2" value="1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_vector2_float" node="MTL_distance" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_squared_vector2_float" node="MTL_distance_squared" nodegroup="math">
+    <input name="x" type="vector2" value="0.0,0.0" />
+    <input name="y" type="vector2" value="1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_length_squared_vector2_float" node="MTL_length_squared" nodegroup="math">
+    <input name="x" type="vector2" value="1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_half3_half" node="MTL_distance" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="1.0,1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_squared_half3_half" node="MTL_distance_squared" nodegroup="math">
+    <input name="x" type="half3" value="0.0,0.0,0.0" />
+    <input name="y" type="half3" value="1.0,1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_length_squared_half3_half" node="MTL_length_squared" nodegroup="math">
+    <input name="x" type="half3" value="1.0,1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_vector3_float" node="MTL_distance" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="1.0,1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_squared_vector3_float" node="MTL_distance_squared" nodegroup="math">
+    <input name="x" type="vector3" value="0.0,0.0,0.0" />
+    <input name="y" type="vector3" value="1.0,1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_length_squared_vector3_float" node="MTL_length_squared" nodegroup="math">
+    <input name="x" type="vector3" value="1.0,1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_half4_half" node="MTL_distance" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="1.0,1.0,1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_squared_half4_half" node="MTL_distance_squared" nodegroup="math">
+    <input name="x" type="half4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="half4" value="1.0,1.0,1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_length_squared_half4_half" node="MTL_length_squared" nodegroup="math">
+    <input name="x" type="half4" value="1.0,1.0,1.0,1.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_vector4_float" node="MTL_distance" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="1.0,1.0,1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_distance_squared_vector4_float" node="MTL_distance_squared" nodegroup="math">
+    <input name="x" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <input name="y" type="vector4" value="1.0,1.0,1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_length_squared_vector4_float" node="MTL_length_squared" nodegroup="math">
+    <input name="x" type="vector4" value="1.0,1.0,1.0,1.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdx_half" node="MTL_dfdx" nodegroup="realitykit">
+    <input name="p" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdy_half" node="MTL_dfdy" nodegroup="realitykit">
+    <input name="p" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_fwidth_half" node="MTL_fwidth" nodegroup="realitykit">
+    <input name="p" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdx_float" node="MTL_dfdx" nodegroup="realitykit">
+    <input name="p" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdy_float" node="MTL_dfdy" nodegroup="realitykit">
+    <input name="p" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_fwidth_float" node="MTL_fwidth" nodegroup="realitykit">
+    <input name="p" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdx_half2" node="MTL_dfdx" nodegroup="realitykit">
+    <input name="p" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdy_half2" node="MTL_dfdy" nodegroup="realitykit">
+    <input name="p" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_fwidth_half2" node="MTL_fwidth" nodegroup="realitykit">
+    <input name="p" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdx_vector2" node="MTL_dfdx" nodegroup="realitykit">
+    <input name="p" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdy_vector2" node="MTL_dfdy" nodegroup="realitykit">
+    <input name="p" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_fwidth_vector2" node="MTL_fwidth" nodegroup="realitykit">
+    <input name="p" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdx_half3" node="MTL_dfdx" nodegroup="realitykit">
+    <input name="p" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdy_half3" node="MTL_dfdy" nodegroup="realitykit">
+    <input name="p" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_fwidth_half3" node="MTL_fwidth" nodegroup="realitykit">
+    <input name="p" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdx_vector3" node="MTL_dfdx" nodegroup="realitykit">
+    <input name="p" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdy_vector3" node="MTL_dfdy" nodegroup="realitykit">
+    <input name="p" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_fwidth_vector3" node="MTL_fwidth" nodegroup="realitykit">
+    <input name="p" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdx_half4" node="MTL_dfdx" nodegroup="realitykit">
+    <input name="p" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdy_half4" node="MTL_dfdy" nodegroup="realitykit">
+    <input name="p" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_fwidth_half4" node="MTL_fwidth" nodegroup="realitykit">
+    <input name="p" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdx_vector4" node="MTL_dfdx" nodegroup="realitykit">
+    <input name="p" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_dfdy_vector4" node="MTL_dfdy" nodegroup="realitykit">
+    <input name="p" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_MTL_fwidth_vector4" node="MTL_fwidth" nodegroup="realitykit">
+    <input name="p" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+</materialx>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="RealityImageBasedLight3D" inherits="Node3D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Defines the ambient lighting of a Node and its descendants.
+	</brief_description>
+	<description>
+		RealityImageBasedLight3D is similar to WorldEnvironment, but it can be used
+		anywhere in the scene, instead of being global. It affects its parent Node and all
+		the descendants of that node.
+
+		This translates to a RealityKit [url=https://developer.apple.com/documentation/realitykit/imagebasedlightcomponent]ImageBasedLightComponent[/url].
+	</description>
+	<tutorials>
+	</tutorials>
+	<members>
+		<member name="environment" type="Environment" setter="set_environment" getter="get_environment">
+			The [Environment] resource used for image-based lighting. Its sky texture is converted to a RealityKit [url=https://developer.apple.com/documentation/realitykit/imagebasedlightcomponent]ImageBasedLightComponent[/url].
+		</member>
+	</members>
+</class>

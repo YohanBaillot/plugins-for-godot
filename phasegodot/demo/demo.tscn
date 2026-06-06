@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d2o5ckmxy4x1b"]
+
+[ext_resource type="AudioStream" uid="uid://bw5wtgvaqakns" path="res://audio/anechoic-vox-mono.wav" id="2_oypfm"]
+[ext_resource type="Script" uid="uid://c81cfywwi0i7b" path="res://PivotTester.gd" id="2_pivot"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4djkd"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ig7tw"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_pivot"]
+
+[node name="TestScene" type="Node3D" unique_id=832134750]
+
+[node name="PHASEOccluder3D" type="PHASEOccluder3D" parent="." unique_id=828645528]
+mesh_node_path = NodePath("MeshInstance3D")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PHASEOccluder3D" unique_id=713761671]
+mesh = SubResource("BoxMesh_4djkd")
+
+[node name="PHASEAudioListener3D" type="PHASEAudioListener3D" parent="." unique_id=321784879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PHASEAudioListener3D" unique_id=66229688]
+mesh = SubResource("CapsuleMesh_ig7tw")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1576020932]
+transform = Transform3D(1, 0, 0, 0, 0.7817491, 0.6235931, 0, -0.6235931, 0.7817491, 0.3203087, 3.6539004, 8.559327)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1271823334]
+transform = Transform3D(1, 0, 0, 0, 0.8774142, 0.47973356, 0, -0.47973356, 0.8774142, 0, 1.8558507, 5.323732)
+
+[node name="PivotSource" type="Node3D" parent="." unique_id=91719404]
+script = ExtResource("2_pivot")
+enable_pivot = true
+pivot_radius = 4.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PivotSource" unique_id=842133082]
+mesh = SubResource("TorusMesh_pivot")
+
+[node name="PHASEAudioStreamPlayer3D" type="PHASEAudioStreamPlayer3D" parent="PivotSource" unique_id=1891335127]
+stream = ExtResource("2_oypfm")
+autoplay = true
+max_polyphony = 4

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="PHASEAudioStreamPlayer3D" inherits="Node3D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Plays spatialized 3D audio through Apple's PHASE framework.
+	</brief_description>
+	<description>
+		A drop-in replacement for Godot's [AudioStreamPlayer3D] that routes audio through Apple's PHASE spatial audio engine. Supports spatial mixing with distance attenuation, channel-based output for surround formats (5.1, 7.1, etc.), and ambient mixing. Provides control over direct path, early reflections, and late reverb send levels.
+		Assign an [AudioStream] to the [member stream] property and call [method play] to begin playback. The node's 3D position is used by PHASE for spatialization.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_playback_position">
+			<return type="float" />
+			<description>
+				Returns the current playback position in seconds.
+			</description>
+		</method>
+		<method name="get_stream_playback">
+			<return type="AudioStreamPlayback" />
+			<description>
+				Returns the [AudioStreamPlayback] object associated with this player.
+			</description>
+		</method>
+		<method name="get_volume_linear" qualifiers="const">
+			<return type="float" />
+			<description>
+				Returns the volume as a linear value (where [code]1.0[/code] is 0 dB).
+			</description>
+		</method>
+		<method name="has_stream_playback">
+			<return type="bool" />
+			<description>
+				Returns [code]true[/code] if an [AudioStreamPlayback] is currently active.
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="from_pos" type="float" default="0.0" />
+			<description>
+				Starts playback of the assigned [member stream] from the given position in seconds.
+			</description>
+		</method>
+		<method name="seek">
+			<return type="void" />
+			<param index="0" name="seconds" type="float" />
+			<description>
+				Seeks to the given position in seconds during playback.
+			</description>
+		</method>
+		<method name="set_volume_linear">
+			<return type="void" />
+			<param index="0" name="volume" type="float" />
+			<description>
+				Sets the volume as a linear value (where [code]1.0[/code] is 0 dB).
+			</description>
+		</method>
+		<method name="stop">
+			<return type="void" />
+			<description>
+				Stops playback.
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="autoplay" type="bool" setter="set_autoplay" getter="is_autoplay_enabled" default="false">
+			If [code]true[/code], audio plays automatically when the node enters the scene tree.
+		</member>
+		<member name="cull_distance" type="float" setter="set_cull_distance" getter="get_cull_distance" default="0.0">
+			The distance beyond which the PHASE framework doesn't process this sound. A value of [code]0.0[/code] disables distance culling.
+		</member>
+		<member name="direct_path_send" type="float" setter="set_direct_path_send" getter="get_direct_path_send" default="1.0">
+			The send level for the direct path signal. Controls how much of the dry audio signal reaches the listener without reverb processing. Only applies when [member mixer_type] is [constant MIXER_SPATIAL].
+		</member>
+		<member name="early_reflections_send" type="float" setter="set_early_reflections_send" getter="get_early_reflections_send" default="0.2">
+			The send level for early reflections. Controls the amount of audio routed to the early reflections reverb stage. Only applies when [member mixer_type] is [constant MIXER_SPATIAL].
+		</member>
+		<member name="enable_direct_path" type="bool" setter="set_enable_direct_path" getter="get_enable_direct_path" default="true">
+			If [code]true[/code], the direct audio path from source to listener is active. Only applies when [member mixer_type] is [constant MIXER_SPATIAL].
+		</member>
+		<member name="enable_early_reflections" type="bool" setter="set_enable_early_reflections" getter="get_enable_early_reflections" default="true">
+			If [code]true[/code], early reflections are active for this source. Only applies when [member mixer_type] is [constant MIXER_SPATIAL].
+		</member>
+		<member name="enable_late_reverb" type="bool" setter="set_enable_late_reverb" getter="get_enable_late_reverb" default="true">
+			If [code]true[/code], late reverb is active for this source. Only applies when [member mixer_type] is [constant MIXER_SPATIAL].
+		</member>
+		<member name="late_reverb_send" type="float" setter="set_late_reverb_send" getter="get_late_reverb_send" default="0.2">
+			The send level for late reverb. Controls the amount of audio routed to the late reverb stage. Only applies when [member mixer_type] is [constant MIXER_SPATIAL].
+		</member>
+		<member name="max_polyphony" type="int" setter="set_max_polyphony" getter="get_max_polyphony" default="1">
+			The maximum number of simultaneous voices this player can use. Calling [method play] while at the limit will stop the oldest voice. Behaves like [member AudioStreamPlayer3D.max_polyphony].
+		</member>
+		<member name="mixer_type" type="int" setter="set_mixer_type" getter="get_mixer_type" enum="PHASEAudioStreamPlayer3D.MixerType" default="0">
+			The PHASE mixer type used for this audio source. Determines how audio is spatialized and rendered. See [constant MIXER_SPATIAL], [constant MIXER_CHANNEL], and [constant MIXER_AMBIENT].
+		</member>
+		<member name="pitch_scale" type="float" setter="set_pitch_scale" getter="get_pitch_scale" default="1.0">
+			The pitch scale factor. A value of [code]2.0[/code] doubles the pitch, [code]0.5[/code] halves it.
+		</member>
+		<member name="playing" type="bool" setter="set_playing" getter="is_playing" default="false">
+			If [code]true[/code], audio is currently playing.
+		</member>
+		<member name="rolloff_factor" type="float" setter="set_rolloff_factor" getter="get_rolloff_factor" default="1.0">
+			Controls distance-based volume attenuation. At [code]1.0[/code], sound reduces by 6 dB for every doubling of distance between source and listener. At [code]2.0[/code], the loss doubles. At [code]0.5[/code], the loss halves. Only applies when [member mixer_type] is [constant MIXER_SPATIAL].
+		</member>
+		<member name="stream" type="AudioStream" setter="set_stream" getter="get_stream">
+			The [AudioStream] to play. PHASE spatializes the raw audio from this stream.
+		</member>
+		<member name="stream_paused" type="bool" setter="set_stream_paused" getter="get_stream_paused" default="false">
+			If [code]true[/code], playback is paused. Set to [code]false[/code] to resume.
+		</member>
+		<member name="volume_db" type="float" setter="set_volume_db" getter="get_volume_db" default="0.0">
+			The volume in decibels. A value of [code]0.0[/code] is full volume. Because PHASE source gain is capped at [code]1.0[/code] (linear), values above [code]0.0[/code] dB are silently clamped to unity gain and will not amplify the signal.
+		</member>
+	</members>
+	<signals>
+		<signal name="finished">
+			<description>
+				Emitted when playback reaches the end of the stream.
+			</description>
+		</signal>
+	</signals>
+	<constants>
+		<constant name="MIXER_SPATIAL" value="0" enum="MixerType">
+			Audio specifies a position and orientation in 3D space. Requires a [PHASEAudioListener3D] in the scene. Sound playback changes depending on the relative positions of the listener and source. Supports direct path, early reflections, and late reverb sends.
+		</constant>
+		<constant name="MIXER_CHANNEL" value="1" enum="MixerType">
+			Maintains the channel configuration of the source audio. For example, the left and right channels of a stereo input play on the left and right speakers, respectively. Also supports surround formats (5.1, 7.1, etc.). No 3D spatialization.
+		</constant>
+		<constant name="MIXER_AMBIENT" value="2" enum="MixerType">
+			Overrides the output channels to give the mixer an orientation, creating the effect of pointing in a specific direction in 3D space.
+		</constant>
+	</constants>
+</class>

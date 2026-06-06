@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="TextureLoader" inherits="Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Internal object to load Godot textures into RealityKit textures.
+	</brief_description>
+	<description>
+		This object is not meant to be used directly; internally it is connected to resource-changed signals.
+	</description>
+	<tutorials>
+	</tutorials>
+</class>

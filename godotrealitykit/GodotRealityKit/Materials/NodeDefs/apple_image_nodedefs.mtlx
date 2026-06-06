@@ -1,0 +1,1196 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+<nodedef name="ND_RealityKitTexture2D_vector4" node="RealityKitTexture2D" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DLOD_vector4" node="RealityKitTexture2DLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DGradient_vector4" node="RealityKitTexture2DGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2D_color4" node="RealityKitTexture2D" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DLOD_color4" node="RealityKitTexture2DLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DGradient_color4" node="RealityKitTexture2DGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixel_vector4" node="RealityKitTexture2DPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixelLOD_vector4" node="RealityKitTexture2DPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixelGradient_vector4" node="RealityKitTexture2DPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixel_color4" node="RealityKitTexture2DPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixelLOD_color4" node="RealityKitTexture2DPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixelGradient_color4" node="RealityKitTexture2DPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2D_color3" node="RealityKitTexture2D" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DLOD_color3" node="RealityKitTexture2DLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DGradient_color3" node="RealityKitTexture2DGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixel_color3" node="RealityKitTexture2DPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixelLOD_color3" node="RealityKitTexture2DPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DPixelGradient_color3" node="RealityKitTexture2DPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArray_vector4" node="RealityKitTexture2DArray" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayLOD_vector4" node="RealityKitTexture2DArrayLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayGradient_vector4" node="RealityKitTexture2DArrayGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArray_color4" node="RealityKitTexture2DArray" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayLOD_color4" node="RealityKitTexture2DArrayLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayGradient_color4" node="RealityKitTexture2DArrayGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixel_vector4" node="RealityKitTexture2DArrayPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixelLOD_vector4" node="RealityKitTexture2DArrayPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixelGradient_vector4" node="RealityKitTexture2DArrayPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixel_color4" node="RealityKitTexture2DArrayPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixelLOD_color4" node="RealityKitTexture2DArrayPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixelGradient_color4" node="RealityKitTexture2DArrayPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArray_color3" node="RealityKitTexture2DArray" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayLOD_color3" node="RealityKitTexture2DArrayLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayGradient_color3" node="RealityKitTexture2DArrayGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="no_flip_v" type="boolean" uniform="true" value="false" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixel_color3" node="RealityKitTexture2DArrayPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixelLOD_color3" node="RealityKitTexture2DArrayPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayPixelGradient_color3" node="RealityKitTexture2DArrayPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+	<input name="index" type="integer" value="0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient_dPdx" type="vector2" value="0.0,0.0" />
+	<input name="gradient_dPdy" type="vector2" value="0.0,0.0" />
+	<input name="offset" type="integer2" value="0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3D_vector4" node="RealityKitTexture3D" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DLOD_vector4" node="RealityKitTexture3DLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DGradient_vector4" node="RealityKitTexture3DGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient3d_dPdx" type="vector3" value="0.0,0.0,0.0" />
+	<input name="gradient3d_dPdy" type="vector3" value="0.0,0.0,0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3D_color4" node="RealityKitTexture3D" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DLOD_color4" node="RealityKitTexture3DLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DGradient_color4" node="RealityKitTexture3DGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient3d_dPdx" type="vector3" value="0.0,0.0,0.0" />
+	<input name="gradient3d_dPdy" type="vector3" value="0.0,0.0,0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixel_vector4" node="RealityKitTexture3DPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixelLOD_vector4" node="RealityKitTexture3DPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixelGradient_vector4" node="RealityKitTexture3DPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient3d_dPdx" type="vector3" value="0.0,0.0,0.0" />
+	<input name="gradient3d_dPdy" type="vector3" value="0.0,0.0,0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixel_color4" node="RealityKitTexture3DPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixelLOD_color4" node="RealityKitTexture3DPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixelGradient_color4" node="RealityKitTexture3DPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient3d_dPdx" type="vector3" value="0.0,0.0,0.0" />
+	<input name="gradient3d_dPdy" type="vector3" value="0.0,0.0,0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3D_color3" node="RealityKitTexture3D" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DLOD_color3" node="RealityKitTexture3DLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DGradient_color3" node="RealityKitTexture3DGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient3d_dPdx" type="vector3" value="0.0,0.0,0.0" />
+	<input name="gradient3d_dPdy" type="vector3" value="0.0,0.0,0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixel_color3" node="RealityKitTexture3DPixel" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixelLOD_color3" node="RealityKitTexture3DPixelLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="lod" type="float" value="0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DPixelGradient_color3" node="RealityKitTexture3DPixelGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="w_wrap_mode" type="string" uniform="true" enum="clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color3" value="0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradient3d_dPdx" type="vector3" value="0.0,0.0,0.0" />
+	<input name="gradient3d_dPdy" type="vector3" value="0.0,0.0,0.0" />
+	<input name="offset" type="integer3" value="0,0,0" />
+	<output name="out" type="color3" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTextureCube_vector4" node="RealityKitTextureCube" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" defaultgeomprop="Pobject" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTextureCubeLOD_vector4" node="RealityKitTextureCubeLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" defaultgeomprop="Pobject" />
+	<input name="lod" type="float" value="0.0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTextureCubeGradient_vector4" node="RealityKitTextureCubeGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="texcoord" type="vector3" defaultgeomprop="Pobject" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradientcube_dPdx" type="vector3" value="0.0,0.0,0.0" />
+	<input name="gradientcube_dPdy" type="vector3" value="0.0,0.0,0.0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTextureCube_color4" node="RealityKitTextureCube" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" defaultgeomprop="Pobject" />
+	<input name="bias" type="float" value="0.0" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTextureCubeLOD_color4" node="RealityKitTextureCubeLOD" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" defaultgeomprop="Pobject" />
+	<input name="lod" type="float" value="0.0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTextureCubeGradient_color4" node="RealityKitTextureCubeGradient" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="u_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="v_wrap_mode" type="string" uniform="true" enum="repeat,mirrored_repeat,clamp_to_edge,clamp_to_zero,clamp_to_border" value="clamp_to_edge" />
+	<input name="border_color" type="string" uniform="true" enum="transparent_black,opaque_black,opaque_white" value="transparent_black" />
+	<input name="mag_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="min_filter" type="string" uniform="true" enum="nearest,linear" value="linear" />
+	<input name="mip_filter" type="string" uniform="true" enum="none,nearest,linear" value="linear" />
+	<input name="max_anisotropy" type="integer" uniform="true" value="1" />
+	<input name="max_lod_clamp" type="float" uniform="true" value="65504.0" />
+	<input name="min_lod_clamp" type="float" uniform="true" value="0.0" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="texcoord" type="vector3" defaultgeomprop="Pobject" />
+	<input name="dynamic_min_lod_clamp" type="float" value="0.0" />
+	<input name="gradientcube_dPdx" type="vector3" value="0.0,0.0,0.0" />
+	<input name="gradientcube_dPdy" type="vector3" value="0.0,0.0,0.0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTextureRead_vector4" node="RealityKitTextureRead" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="x" type="integer" value="0" />
+	<input name="y" type="integer" value="0" />
+	<input name="lod" type="integer" value="0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTextureRead_color4" node="RealityKitTextureRead" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="x" type="integer" value="0" />
+	<input name="y" type="integer" value="0" />
+	<input name="lod" type="integer" value="0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayRead_vector4" node="RealityKitTexture2DArrayRead" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="index" type="integer" value="0" />
+	<input name="x" type="integer" value="0" />
+	<input name="y" type="integer" value="0" />
+	<input name="lod" type="integer" value="0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture2DArrayRead_color4" node="RealityKitTexture2DArrayRead" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="index" type="integer" value="0" />
+	<input name="x" type="integer" value="0" />
+	<input name="y" type="integer" value="0" />
+	<input name="lod" type="integer" value="0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DRead_vector4" node="RealityKitTexture3DRead" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="default" type="vector4" value="0.0,0.0,0.0,0.0" />
+	<input name="x" type="integer" value="0" />
+	<input name="y" type="integer" value="0" />
+	<input name="z" type="integer" value="0" />
+	<input name="lod" type="integer" value="0" />
+	<output name="out" type="vector4" />
+</nodedef>
+
+<nodedef name="ND_RealityKitTexture3DRead_color4" node="RealityKitTexture3DRead" nodegroup="realitykit" target="realitykit">
+	<input name="file" type="filename" />
+	<input name="default" type="color4" value="0.0,0.0,0.0,1.0" />
+	<input name="x" type="integer" value="0" />
+	<input name="y" type="integer" value="0" />
+	<input name="z" type="integer" value="0" />
+	<input name="lod" type="integer" value="0" />
+	<output name="out" type="color4" />
+</nodedef>
+
+
+</materialx>

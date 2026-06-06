@@ -1,0 +1,4 @@
+framework module GodotRealityKit [system] {
+  header "GodotRealityKit.h"
+  export *
+}

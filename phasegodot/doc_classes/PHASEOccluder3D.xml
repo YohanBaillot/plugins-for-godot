@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="PHASEOccluder3D" inherits="Node3D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Blocks and filters audio using mesh geometry in the PHASE engine.
+	</brief_description>
+	<description>
+		Uses a referenced [MeshInstance3D]'s geometry to create an acoustic occlusion shape in the PHASE engine. Audio passing through the occluder is attenuated and filtered based on the selected [member material] preset.
+		Set [member mesh_node_path] to point at a [MeshInstance3D] in the scene. The mesh's vertices and edges are sent to PHASE to define the occlusion shape. The occluder's transform is synced to PHASE each physics frame.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+	</methods>
+	<members>
+		<member name="material" type="int" setter="set_material" getter="get_material" enum="godot.PHASEMaterialPreset" default="0">
+			The acoustic material preset for this occluder. Determines how sound is attenuated and filtered when passing through. These are the material presets provided by Apple's PHASE framework.
+		</member>
+		<member name="mesh_node_path" type="NodePath" setter="set_mesh_node_path" getter="get_mesh_node_path" default="NodePath(&quot;&quot;)">
+			Path to a [MeshInstance3D] node whose geometry defines the occlusion shape. Changing this path recreates the occluder in the PHASE engine.
+		</member>
+	</members>
+	<constants>
+		<constant name="MaterialPresetCardboard" value="0" enum="PHASEMaterialPreset">
+			Cardboard acoustic material.
+		</constant>
+		<constant name="MaterialPresetGlass" value="1" enum="PHASEMaterialPreset">
+			Glass acoustic material.
+		</constant>
+		<constant name="MaterialPresetBrick" value="2" enum="PHASEMaterialPreset">
+			Brick acoustic material.
+		</constant>
+		<constant name="MaterialPresetConcrete" value="3" enum="PHASEMaterialPreset">
+			Concrete acoustic material.
+		</constant>
+		<constant name="MaterialPresetDrywall" value="4" enum="PHASEMaterialPreset">
+			Drywall acoustic material.
+		</constant>
+		<constant name="MaterialPresetWood" value="5" enum="PHASEMaterialPreset">
+			Wood acoustic material.
+		</constant>
+	</constants>
+</class>

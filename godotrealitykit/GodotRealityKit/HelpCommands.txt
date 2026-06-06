@@ -1,0 +1,14 @@
+GDRK Help:
+
+Remove the user-default "gdrk-print-help" to stop printing the help.
+
+All the following keys are user-defaults, which means that they can be set either with:
+1. Adding "-gdrk-print-help YES" to the commandline arguments of the app.
+2. Running "defaults write -g gdrk-print-help YES" on the system.
+
+"gdrk-debug-shader-dump" to save the generated RealityKit shaders to /tmp
+"gdrk-print-perf-stats" to print performance statistics to the terminal
+"gdrk-reality-file-dump" to save the RealityKit scene to a Reality file after the first frame
+"gdrk-metal-capture-dump" to save a Metal capture of the first frame
+
+End of the GDRK help

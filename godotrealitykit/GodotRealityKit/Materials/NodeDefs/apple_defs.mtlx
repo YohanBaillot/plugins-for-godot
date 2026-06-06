@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<materialx version="1.38">
+  <typedef name="half" />
+  <typedef name="vertex" semantic="shader" context="geometry" />
+  <typedef name="half2" />
+  <typedef name="half3" />
+  <typedef name="half4" />
+  <typedef name="float2" />
+  <typedef name="float3" />
+  <typedef name="float4" />
+  <typedef name="integer2" />
+  <typedef name="integer3" />
+  <typedef name="integer4" />
+  <geompropdef name="GeomColor_Float" type="float" geomprop="geomcolor" index="0" />
+  <geompropdef name="GeomColor_Color3" type="color3" geomprop="geomcolor" index="0" />
+  <geompropdef name="GeomColor_Color4" type="color4" geomprop="geomcolor" index="0" />
+  <geompropdef name="UV1" type="vector2" geomprop="texcoord" index="1" />
+  <geompropdef name="UV2" type="vector4" geomprop="texcoord" index="2" />
+  <geompropdef name="UV3" type="vector4" geomprop="texcoord" index="3" />
+  <geompropdef name="UV4" type="vector4" geomprop="texcoord" index="4" />
+  <geompropdef name="UV5" type="vector4" geomprop="texcoord" index="5" />
+  <geompropdef name="UV6" type="vector4" geomprop="texcoord" index="6" />
+  <geompropdef name="UV7" type="vector4" geomprop="texcoord" index="7" />
+  <targetdef name="realitykit" />
+  <targetdef name="realitykit_surface_shader" inherit="realitykit" />
+  <targetdef name="realitykit_geometry_modifier" inherit="realitykit" />
+  <!-- Surface nodes -->
+  <nodedef name="ND_realitykit_geometrymodifier_2_0_vertexshader" node="realitykit_geometrymodifier_vertexshader" nodegroup="realitykit" target="realitykit" apple_availability="visionOS 2.0; macOS 15.0; iOS 18.0" version="2.0" isdefaultversion="true">
+    <input name="modelPositionOffset" type="vector3" value="0, 0, 0" />
+    <input name="color" type="color4" defaultgeomprop="GeomColor_Color4" />
+    <input name="normal" type="vector3" defaultgeomprop="Nobject" />
+    <input name="bitangent" type="vector3" defaultgeomprop="Bobject" />
+    <input name="uv0" type="vector2" defaultgeomprop="UV0" />
+    <input name="uv1" type="vector2" defaultgeomprop="UV1" />
+    <input name="uv2" type="vector4" defaultgeomprop="UV2" />
+    <input name="uv3" type="vector4" defaultgeomprop="UV3" />
+    <input name="uv4" type="vector4" defaultgeomprop="UV4" />
+    <input name="uv5" type="vector4" defaultgeomprop="UV5" />
+    <input name="uv6" type="vector4" defaultgeomprop="UV6" />
+    <input name="uv7" type="vector4" defaultgeomprop="UV7" />
+    <output name="out" type="vertex" />
+  </nodedef>
+  <nodedef name="ND_realitykit_unlit_surfaceshader" node="realitykit_unlit_surfaceshader" nodegroup="realitykit" target="realitykit">
+    <input name="color" type="color3" value="1, 1, 1" />
+    <input name="opacity" type="float" value="1" />
+    <input name="opacityThreshold" type="float" value="0" />
+    <input name="applyPostProcessToneMap" type="boolean" value="true" uniform="true" />
+    <input name="hasPremultipliedAlpha" type="boolean" value="false" uniform="true" />
+    <output name="out" type="surfaceshader" />
+  </nodedef>
+  <nodedef name="ND_realitykit_pbr_surfaceshader" node="realitykit_pbr_surfaceshader" nodegroup="realitykit" target="realitykit">
+    <input name="baseColor" type="color3" value="0.18, 0.18, 0.18" />
+    <input name="emissiveColor" type="color3" value="0, 0, 0" />
+    <input name="normal" type="vector3" value="0, 0, 1" />
+    <input name="roughness" type="float" value="0.5" />
+    <input name="metallic" type="float" value="0" />
+    <input name="ambientOcclusion" type="float" value="1" />
+    <input name="specular" type="float" value="0.5" />
+    <input name="opacity" type="float" value="1" />
+    <input name="opacityThreshold" type="float" value="0" />
+    <input name="clearcoat" type="float" value="0" />
+    <input name="clearcoatRoughness" type="float" value="0.01" />
+    <input name="clearcoatNormal" type="vector3" value="0, 0, 1" />
+    <input name="hasPremultipliedAlpha" type="boolean" value="false" uniform="true" />
+    <output name="out" type="surfaceshader" />
+  </nodedef>
+  <!-- Occlusion Shaders -->
+  <nodedef name="ND_realitykit_occlusion_surfaceshader" node="realitykit_occlusion" nodegroup="realitykit" target="realitykit">
+    <output name="out" type="surfaceshader" />
+  </nodedef>
+  <nodedef name="ND_realitykit_shadowreceiver_surfaceshader" node="realitykit_shadowreceiver" nodegroup="realitykit" target="realitykit">
+    <output name="out" type="surfaceshader" />
+  </nodedef>
+  <!-- View Direction -->
+  <nodedef name="ND_realitykit_viewdirection_vector3" node="realitykit_viewdirection" nodegroup="realitykit" target="realitykit">
+    <input name="space" type="string" enum="model,object,world,tangent" value="world" uniform="true" />
+    <output name="out" type="vector3" default="0, 0, 1" />
+  </nodedef>
+  <!-- Camera Position -->
+  <nodedef name="ND_realitykit_cameraposition_vector3" node="realitykit_cameraposition" nodegroup="realitykit" target="realitykit">
+    <input name="space" type="string" enum="model,object,world,tangent" value="world" uniform="true" />
+    <output name="out" type="vector3" default="0, 0, 0" />
+  </nodedef>
+  <!-- Reflect -->
+  <nodedef name="ND_realitykit_reflect_vector3" node="realitykit_reflect" nodegroup="geometric" target="realitykit">
+    <input name="in" type="vector3" value="0.0,0.0,0.0" />
+    <input name="normal" type="vector3" defaultgeomprop="Nworld" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_reflect_half3" node="realitykit_reflect" nodegroup="geometric" target="realitykit" apple_availability="macOS 16.0; iOS 19.0; visionOS 3.0">
+    <input name="in" type="half3" value="0.0,0.0,0.0" />
+    <input name="normal" type="half3" defaultgeomprop="Nworld" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <!-- Refract -->
+  <nodedef name="ND_realitykit_refract_vector3" node="realitykit_refract" nodegroup="geometric" target="realitykit">
+    <input name="in" type="vector3" value="0.0,0.0,0.0" />
+    <input name="normal" type="vector3" defaultgeomprop="Nworld" />
+    <input name="eta" type="float" value="1.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_refract_half3" node="realitykit_refract" nodegroup="geometric" target="realitykit" apple_availability="macOS 16.0; iOS 19.0; visionOS 3.0">
+    <input name="in" type="half3" value="0.0,0.0,0.0" />
+    <input name="normal" type="half3" defaultgeomprop="Nworld" />
+    <input name="eta" type="half" value="1.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <!-- IBL sampling -->
+  <nodedef name="ND_realitykit_environment_radiance" node="realitykit_environment_radiance" nodegroup="realitykit" target="realitykit,realitykit_surface_shader">
+    <input name="baseColor" type="color3" value="1.0,1.0,1.0" />
+    <input name="roughness" type="half" value="0" />
+    <input name="specular" type="half" value="0" />
+    <input name="metallic" type="half" value="0" />
+    <input name="normal" type="vector3" defaultgeomprop="Nworld" />
+    <output name="diffuseRadiance" type="color3" />
+    <output name="specularRadiance" type="color3" />
+  </nodedef>
+  <!-- Hover State -->
+  <nodedef name="ND_realitykit_hover_state" node="realitykit_hover_state" nodegroup="realitykit" target="realitykit,realitykit_surface_shader">
+    <output name="intensity" type="float" />
+    <output name="position" type="vector3" />
+    <output name="timeSinceHoverStart" type="float" />
+    <output name="isActive" type="boolean" />
+  </nodedef>
+  <!-- CubeImage nodes -->
+  <!--
+    <implementation> tags go here.
+    From the MaterialX spec, allowed attributes are:
+        ● name​ (string, required): a unique name for this <implementation>
+        ● nodedef​ (string, required): the name of the <nodedef> for which this <implementation> applies
+        ● implname​ (string, optional): an alternative name for this node for the specified target; this
+        allows one to say that for this particular target, the node/shader is called something else but is functionally equivalent to the node described by the nodedef. Note that node graphs in MaterialX documents should always use the node names defined in the nodedefs, never implementation-specific names.
+        ● file​ (filename, optional): the URI of an external file containing the source code for the entry point of this particular node template. This file may contain source code for other templates of the same custom node, and/or for other custom nodes.
+    ● sourcecode​ (string, optional): a string containing the actual source code for the node.
+        ● function​ (string, optional): the name of a function within the given source code that contains
+    the implementation of this node.
+        ● target​ (stringarray, optional): the set of targets to which this implementation is restricted. By default, an implementation is considered applicable to all targets that the referenced nodedef applies to. If the referenced <nodedef> also specifies a target, then this ​target​ must be a subset of the nodedef's target list.
+        ● format​ (string, optional): the ​format used by the given source code, typically "shader" if the source code is a complete shader that can be compiled and executed as is by a target renderer, or "fragment" if the source code is a code fragment that requires processing of a code generator before it can be compiled and executed. Default is "shader".
+    -->
+  <!-- Material Parameters -->
+  <nodedef name="ND_realitykit_material_parameters_base_color_tint" node="realitykit_material_parameters_base_color_tint" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="baseColorTint" type="color3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_material_parameters_opacity_scale" node="realitykit_material_parameters_opacity_scale" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="opacityScale" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_material_parameters_opacity_threshold" node="realitykit_material_parameters_opacity_threshold" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="opacityThreshold" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_material_parameters_roughness_scale" node="realitykit_material_parameters_roughness_scale" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="roughnessScale" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_material_parameters_metallic_scale" node="realitykit_material_parameters_metallic_scale" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="metallicScale" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_material_parameters_specular_scale" node="realitykit_material_parameters_specular_scale" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="specularScale" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_material_parameters_emissive_color" node="realitykit_material_parameters_emissive_color" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="emissiveColor" type="color3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_material_parameters_clearcoat_scale" node="realitykit_material_parameters_clearcoat_scale" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="clearcoatScale" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_material_parameters_clearcoat_roughness_scale" node="realitykit_material_parameters_clearcoat_roughness_scale" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="clearcoatRoughnessScale" type="float" />
+  </nodedef>
+  <!-- RealityKit material parameter geometry modifier / surface shader -->
+  <!-- Geometry Modifier Functions -->
+  <nodedef name="ND_realitykit_geometry_modifier_uv0_offset" node="realitykit_geometry_modifier_uv0_offset" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="uv0Offset" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_uv0_transform" node="realitykit_geometry_modifier_uv0_transform" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="uv0Transform" type="matrix22" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_uv1_offset" node="realitykit_geometry_modifier_uv1_offset" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="uv1Offset" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_uv1_transform" node="realitykit_geometry_modifier_uv1_transform" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="uv1Transform" type="matrix22" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_custom_parameter" node="realitykit_geometry_modifier_custom_parameter" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="customParameter" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_model_to_world" node="realitykit_geometry_modifier_model_to_world" nodegroup="realitykit" target="realitykit">
+    <output name="modelToWorld" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_world_to_model" node="realitykit_geometry_modifier_world_to_model" nodegroup="realitykit" target="realitykit">
+    <output name="worldToModel" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_normal_to_world" node="realitykit_geometry_modifier_normal_to_world" nodegroup="realitykit" target="realitykit">
+    <output name="normalToWorld" type="matrix33" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_model_to_view" node="realitykit_geometry_modifier_model_to_view" nodegroup="realitykit" target="realitykit">
+    <output name="modelToView" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_view_to_projection" node="realitykit_geometry_modifier_view_to_projection" nodegroup="realitykit" target="realitykit">
+    <output name="viewToProjection" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_projection_to_view" node="realitykit_geometry_modifier_projection_to_view" nodegroup="realitykit" target="realitykit">
+    <output name="projectionToView" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_vertex_id" node="realitykit_geometry_modifier_vertex_id" nodegroup="realitykit" target="realitykit">
+    <output name="vertexId" type="integer" />
+  </nodedef>
+  <nodedef name="ND_realitykit_instance_id" node="realitykit_instance_id" nodegroup="realitykit" target="realitykit" apple_availability="macOS 16.4; iOS 19.4; visionOS 3.4">
+    <output name="out" type="integer" />
+  </nodedef>
+  <nodedef name="ND_realitykit_is_front_facing" node="realitykit_is_front_facing" nodegroup="realitykit" target="realitykit" apple_availability="macOS 16.4; iOS 19.4; visionOS 3.4">
+    <output name="out" type="boolean" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_model_position_offset" node="realitykit_geometry_modifier_model_position_offset" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="modelPositionOffset" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_custom_attribute" node="realitykit_geometry_modifier_custom_attribute" nodegroup="realitykit" available="unsupported" apple_obsoleted="visionos2.0" target="realitykit">
+    <output name="customAttribute" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_custom_attribute_half4_0" node="realitykit_geometry_modifier_custom_attribute_half4_0" nodegroup="realitykit" available="unsupported" apple_obsoleted="visionos2.0" target="realitykit">
+    <output name="customAttribute" type="half4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_custom_attribute_half4_1" node="realitykit_geometry_modifier_custom_attribute_half4_1" nodegroup="realitykit" available="unsupported" apple_obsoleted="visionos2.0" target="realitykit">
+    <output name="customAttribute" type="half4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_custom_attribute_half4_2" node="realitykit_geometry_modifier_custom_attribute_half4_2" nodegroup="realitykit" available="unsupported" apple_obsoleted="visionos2.0" target="realitykit">
+    <output name="customAttribute" type="half4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_custom_attribute_half4_3" node="realitykit_geometry_modifier_custom_attribute_half4_3" nodegroup="realitykit" available="unsupported" apple_obsoleted="visionos2.0" target="realitykit">
+    <output name="customAttribute" type="half4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_custom_attribute_half2_0" node="realitykit_geometry_modifier_custom_attribute_half2_0" nodegroup="realitykit" available="unsupported" apple_obsoleted="visionos2.0" target="realitykit">
+    <output name="customAttribute" type="half2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_geometry_modifier_custom_attribute_half2_1" node="realitykit_geometry_modifier_custom_attribute_half2_1" nodegroup="realitykit" available="unsupported" apple_obsoleted="visionos2.0" target="realitykit">
+    <output name="customAttribute" type="half2" />
+  </nodedef>
+  <!--    input only nodes are not yet supported -->
+  <!--    <nodedef name="ND_realitykit_geometry_modifier_set_model_position_offset" node="realitykit_geometry_modifier_set_model_position_offset" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="modelPositionOffset" type="float3" />-->
+  <!--        <output name="time" type="geometryModifier" />-->
+  <!--    </nodedef>-->
+  <!--    <nodedef name="ND_realitykit_geometry_modifier_set_custom_attribute" node="realitykit_geometry_modifier_set_custom_attribute" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="customAttribute" type="float4" />-->
+  <!--    </nodedef>-->
+  <!--    <nodedef name="ND_realitykit_geometry_modifier_set_color" node="realitykit_geometry_modifier_set_color" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="color" type="color4" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_geometry_modifier_set_normal" node="realitykit_geometry_modifier_set_normal" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="normal" type="float3" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_geometry_modifier_set_bitangent" node="realitykit_geometry_modifier_set_bitangent" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="bitangent" type="float3" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_geometry_modifier_set_uv0" node="realitykit_geometry_modifier_set_uv0" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="uv0" type="float2" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_geometry_modifier_set_uv1" node="realitykit_geometry_modifier_set_uv1" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="uv1" type="float2" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!-- RealityKit geometry modifier functions -->
+  <!--    Setter Functions are not yet supported-->
+  <!--    <implementation name="IMP_realitykit_geometry_modifier_set_color" nodedef="ND_realitykit_geometry_modifier_set_color" function="ND_realitykit_geometry_modifier_set_color" target="realitykit_geometry_modifier"/>-->
+  <!--    <implementation name="IMP_realitykit_geometry_modifier_set_normal" nodedef="ND_realitykit_geometry_modifier_set_normal" function="ND_realitykit_geometry_modifier_set_normal" target="realitykit_geometry_modifier"/>-->
+  <!--    <implementation name="IMP_realitykit_geometry_modifier_set_bitangent" nodedef="ND_realitykit_geometry_modifier_set_bitangent" function="ND_realitykit_geometry_modifier_set_bitangent" target="realitykit_geometry_modifier"/>-->
+  <!--    <implementation name="IMP_realitykit_geometry_modifier_set_uv0" nodedef="ND_realitykit_geometry_modifier_set_uv0" function="ND_realitykit_geometry_modifier_set_uv0" target="realitykit_geometry_modifier"/>-->
+  <!--    <implementation name="IMP_realitykit_geometry_modifier_set_uv1" nodedef="ND_realitykit_geometry_modifier_set_uv1" function="ND_realitykit_geometry_modifier_set_uv1" target="realitykit_geometry_modifier"/>-->
+  <!--    <implementation name="IMP_realitykit_geometry_modifier_set_custom_attribute" nodedef="ND_realitykit_geometry_modifier_set_custom_attribute" function="ND_realitykit_geometry_modifier_custom_attribute" target="realitykit_geometry_modifier"/>-->
+  <!-- Surface Functions -->
+  <nodedef name="ND_realitykit_surface_custom_parameter" node="realitykit_surface_custom_parameter" nodegroup="realitykit" available="unsupported" target="realitykit">
+    <output name="customParameter" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_model_to_world" node="realitykit_surface_model_to_world" nodegroup="realitykit" target="realitykit">
+    <output name="modelToWorld" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_model_to_view" node="realitykit_surface_model_to_view" nodegroup="realitykit" target="realitykit">
+    <output name="modelToView" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_world_to_view" node="realitykit_surface_world_to_view" nodegroup="realitykit" target="realitykit">
+    <output name="worldToView" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_view_to_projection" node="realitykit_surface_view_to_projection" nodegroup="realitykit" target="realitykit">
+    <output name="viewToProjection" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_projection_to_view" node="realitykit_surface_projection_to_view" nodegroup="realitykit" target="realitykit">
+    <output name="projectionToView" type="matrix44" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_screen_position" node="realitykit_surface_screen_position" nodegroup="realitykit" target="realitykit">
+    <output name="screenPosition" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_view_direction" node="realitykit_surface_view_direction" nodegroup="realitykit" target="realitykit">
+    <output name="viewDirection" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_base_color" node="realitykit_surface_base_color" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="baseColor" type="color3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_emissive_color" node="realitykit_surface_emissive_color" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="emissiveColor" type="color3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_roughness" node="realitykit_surface_roughness" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="roughness" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_metallic" node="realitykit_surface_metallic" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="metallic" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_ambient_occlusion" node="realitykit_surface_ambient_occlusion" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="ambientOcclusion" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_specular" node="realitykit_surface_specular" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="specular" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_opacity" node="realitykit_surface_opacity" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="opacity" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_clearcoat" node="realitykit_surface_clearcoat" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="clearcoat" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_surface_clearcoat_roughness" node="realitykit_surface_clearcoat_roughness" nodegroup="realitykit" target="realitykit" available="unsupported">
+    <output name="clearcoatRoughness" type="float" />
+  </nodedef>
+  <!--    input only nodes are not yet supported -->
+  <!--    <nodedef name="ND_realitykit_surface_set_base_color" node="realitykit_surface_set_base_color" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="baseColor" type="float4" />-->
+  <!--    </nodedef>-->
+  <!--    -->
+  <!--    <nodedef name="ND_realitykit_surface_set_tangent_space_normal" node="realitykit_surface_set_tangent_space_normal" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="tangentSpaceNormal" type="float3" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_surface_set_emissive_color" node="realitykit_surface_set_emissive_color" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="emissiveColor" type="color4" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_surface_set_roughness" node="realitykit_surface_set_roughness" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="roughness" type="float" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_surface_set_metallic" node="realitykit_surface_set_metallic" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="metallic" type="float" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_surface_set_specular" node="realitykit_surface_set_specular" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="specular" type="float" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_surface_set_opacity" node="realitykit_surface_set_opacity" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="opacity" type="float" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_surface_set_clearcoat" node="realitykit_surface_set_clearcoat" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="clearcoat" type="float" />-->
+  <!--    </nodedef>-->
+  <!---->
+  <!--    <nodedef name="ND_realitykit_surface_set_clearcoat_roughness" node="realitykit_surface_set_clearcoat_roughness" nodegroup="realitykit" target="realitykit">-->
+  <!--        <input name="clearcoatRoughness" type="float" />-->
+  <!--    </nodedef>-->
+  <!-- RealityKit surface functions -->
+  <!--    input only nodes are not yet supported -->
+  <!--    <implementation name="IMP_realitykit_surface_set_base_color" nodedef="ND_realitykit_surface_set_base_color" function="ND_realitykit_surface_set_base_color" target="realitykit_surface_shader"/>-->
+  <!--    <implementation name="IMP_realitykit_surface_set_tangent_space_normal" nodedef="ND_realitykit_surface_set_tangent_space_normal" function="ND_realitykit_surface_set_tangent_space_normal" target="realitykit_surface_shader"/>-->
+  <!--    <implementation name="IMP_realitykit_surface_set_emissive_color" nodedef="ND_realitykit_surface_set_emissive_color" function="ND_realitykit_surface_set_emissive_color" target="realitykit_surface_shader"/>-->
+  <!--    <implementation name="IMP_realitykit_surface_set_roughness" nodedef="ND_realitykit_surface_set_roughness" function="ND_realitykit_surface_set_roughness" target="realitykit_surface_shader"/>-->
+  <!--    <implementation name="IMP_realitykit_surface_set_metallic" nodedef="ND_realitykit_surface_set_metallic" function="ND_realitykit_surface_set_metallic" target="realitykit_surface_shader"/>-->
+  <!--    <implementation name="IMP_realitykit_surface_set_specular" nodedef="ND_realitykit_surface_set_specular" function="ND_realitykit_surface_set_specular" target="realitykit_surface_shader"/>-->
+  <!--    <implementation name="IMP_realitykit_surface_set_opacity" nodedef="ND_realitykit_surface_set_opacity" function="ND_realitykit_surface_set_opacity" target="realitykit_surface_shader"/>-->
+  <!--    <implementation name="IMP_realitykit_surface_set_clearcoat" nodedef="ND_realitykit_surface_set_clearcoat" function="ND_realitykit_surface_set_clearcoat" target="realitykit_surface_shader"/>-->
+  <!--    <implementation name="IMP_realitykit_surface_set_clearcoat_roughness" nodedef="ND_realitykit_surface_set_clearcoat_roughness" function="ND_realitykit_surface_set_clearcoat_roughness" target="realitykit_surface_shader"/>-->
+  <!-- RealityKit Math functions -->
+  <!--
+      Node: <fractional>
+      Returns the fractional part of input that is greater than or equal to 0 or less than 1.
+    -->
+  <nodedef name="ND_realitykit_fractional_float" node="fractional" nodegroup="math">
+    <input name="in" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_color3" node="fractional" nodegroup="math">
+    <input name="in" type="color3" value="0.0, 0.0, 0.0" />
+    <output name="out" type="color3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_color4" node="fractional" nodegroup="math">
+    <input name="in" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <output name="out" type="color4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_vector2" node="fractional" nodegroup="math">
+    <input name="in" type="vector2" value="0.0, 0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_vector3" node="fractional" nodegroup="math">
+    <input name="in" type="vector3" value="0.0, 0.0, 0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_vector4" node="fractional" nodegroup="math">
+    <input name="in" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_half" node="fractional" nodegroup="math">
+    <input name="in" type="half" value="0.0, 0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_half2" node="fractional" nodegroup="math">
+    <input name="in" type="half2" value="0.0, 0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_half3" node="fractional" nodegroup="math">
+    <input name="in" type="half3" value="0.0, 0.0, 0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_fractional_half4" node="fractional" nodegroup="math">
+    <input name="in" type="half4" value="0.0, 0.0, 0.0, 0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <!--
+      Node: <step>
+      Returns 1 for each channel of input if greater than or equal to edge, and 0 otherwise.
+    -->
+  <nodedef name="ND_realitykit_step_float" node="step" nodegroup="adjustment">
+    <input name="in" type="float" value="0.0" />
+    <input name="edge" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_color3" node="step" nodegroup="adjustment">
+    <input name="in" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="edge" type="color3" value="0.0, 0.0, 0.0" />
+    <output name="out" type="color3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_color4" node="step" nodegroup="adjustment">
+    <input name="in" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="edge" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <output name="out" type="color4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_vector2" node="step" nodegroup="adjustment">
+    <input name="in" type="vector2" value="0.0, 0.0" />
+    <input name="edge" type="vector2" value="0.0, 0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_vector3" node="step" nodegroup="adjustment">
+    <input name="in" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="edge" type="vector3" value="0.0, 0.0, 0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_vector4" node="step" nodegroup="adjustment">
+    <input name="in" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="edge" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_half" node="step" nodegroup="adjustment">
+    <input name="in" type="half" value="0.0" />
+    <input name="edge" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_half2" node="step" nodegroup="adjustment">
+    <input name="in" type="half2" value="0.0, 0.0" />
+    <input name="edge" type="half2" value="0.0, 0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_half3" node="step" nodegroup="adjustment">
+    <input name="in" type="half3" value="0.0, 0.0, 0.0" />
+    <input name="edge" type="half3" value="0.0, 0.0, 0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_step_half4" node="step" nodegroup="adjustment">
+    <input name="in" type="half4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="edge" type="half4" value="0.0, 0.0, 0.0, 0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <!--
+      Node: <and>
+      Logical And operation for two boolean values.
+    -->
+  <nodedef name="ND_realitykit_logical_and" node="and" nodegroup="conditional">
+    <input name="in1" type="boolean" value="false" />
+    <input name="in2" type="boolean" value="false" />
+    <output name="out" type="boolean" defaultinput="in1" />
+  </nodedef>
+  <!--
+      Node: <or>
+      Logical Or operation for two boolean values.
+    -->
+  <nodedef name="ND_realitykit_logical_or" node="or" nodegroup="conditional">
+    <input name="in1" type="boolean" value="false" />
+    <input name="in2" type="boolean" value="false" />
+    <output name="out" type="boolean" defaultinput="in1" />
+  </nodedef>
+  <!--
+      Node: <xor>
+      Logical XOR operation for two boolean values.
+    -->
+  <nodedef name="ND_realitykit_logical_xor" node="xor" nodegroup="conditional">
+    <input name="in1" type="boolean" value="false" />
+    <input name="in2" type="boolean" value="false" />
+    <output name="out" type="boolean" defaultinput="in1" />
+  </nodedef>
+  <!--
+      Node: <not>
+      Returns logical complement of input.
+    -->
+  <nodedef name="ND_realitykit_logical_not" node="not" nodegroup="conditional">
+    <input name="in" type="boolean" value="false" />
+    <output name="out" type="boolean" />
+  </nodedef>
+  <!-- Construct matrix with n columns and m rows, from n vectors with m components. -->
+  <nodedef name="ND_realitykit_combine3_matrix33" node="combine3" nodegroup="channel">
+    <input name="in1" type="vector3" value="1.0,0.0,0.0" />
+    <input name="in2" type="vector3" value="0.0,1.0,0.0" />
+    <input name="in3" type="vector3" value="0.0,0.0,1.0" />
+    <output name="out" type="matrix33" default="1.0,0.0,0.0, 0.0,1.0,0.0, 0.0,0.0,1.0" />
+  </nodedef>
+  <nodedef name="ND_realitykit_combine4_matrix44" node="combine4" nodegroup="channel">
+    <input name="in1" type="vector4" value="1.0, 0.0, 0.0, 0.0" />
+    <input name="in2" type="vector4" value="0.0, 1.0, 0.0, 0.0" />
+    <input name="in3" type="vector4" value="0.0, 0.0, 1.0, 0.0" />
+    <input name="in4" type="vector4" value="0.0, 0.0, 0.0, 1.0" />
+    <output name="out" type="matrix44" default="1.0,0.0,0.0, 0.0,1.0,0.0, 0.0,0.0,1.0, 0.0,0.0,0.0,1.0" />
+  </nodedef>
+  <nodedef name="ND_realitykit_combine2_matrix22" node="combine2" nodegroup="channel">
+    <input name="in1" type="vector2" value="1.0,0.0" />
+    <input name="in2" type="vector2" value="0.0,1.0" />
+    <output name="out" type="matrix22" default="1.0,0.0, 0.0,1.0" />
+  </nodedef>
+  <!--
+      Node: <oneminus>
+      Returns scalar or vector where each component of the input is subtracted from 1.
+    -->
+  <nodedef name="ND_realitykit_oneminus_float" node="oneminus" nodegroup="math">
+    <input name="in" type="float" value="0.0" />
+    <output name="out" type="float" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_color3" node="oneminus" nodegroup="math">
+    <input name="in" type="color3" value="0.0,0.0,0.0" />
+    <output name="out" type="color3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_color4" node="oneminus" nodegroup="math">
+    <input name="in" type="color4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="color4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_vector2" node="oneminus" nodegroup="math">
+    <input name="in" type="vector2" value="0.0,0.0" />
+    <output name="out" type="vector2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_vector3" node="oneminus" nodegroup="math">
+    <input name="in" type="vector3" value="0.0,0.0,0.0" />
+    <output name="out" type="vector3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_vector4" node="oneminus" nodegroup="math">
+    <input name="in" type="vector4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="vector4" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_half" node="oneminus" nodegroup="math">
+    <input name="in" type="half" value="0.0" />
+    <output name="out" type="half" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_half2" node="oneminus" nodegroup="math">
+    <input name="in" type="half2" value="0.0,0.0" />
+    <output name="out" type="half2" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_half3" node="oneminus" nodegroup="math">
+    <input name="in" type="half3" value="0.0,0.0,0.0" />
+    <output name="out" type="half3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_oneminus_half4" node="oneminus" nodegroup="math">
+    <input name="in" type="half4" value="0.0,0.0,0.0,0.0" />
+    <output name="out" type="half4" />
+  </nodedef>
+  <!-- RealityKit background blur functions -->
+  <!--
+     Node: <blur>
+     Returns a blurred background color.
+    -->
+  <nodedef name="ND_realitykit_background_blur_color3" node="realitykit_surface_background_blur_color3" nodegroup="realitykit" target="realitykit">
+    <output name="out" type="color3" />
+  </nodedef>
+  <nodedef name="ND_realitykit_background_blur_color4" node="realitykit_surface_background_blur_color4" nodegroup="realitykit" target="realitykit">
+    <output name="out" type="color4" />
+  </nodedef>
+</materialx>

@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+#===----------------------------------------------------------------------===#
+# Copyright © 2026 Apple Inc.
+#
+# Licensed under the MIT license (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# LICENSE
+#
+#===----------------------------------------------------------------------===#
+
+import os
+import sys
+
+localEnv = Environment(tools=["default"], PLATFORM="")
+
+env = localEnv.Clone()
+
+repo_dir = ARGUMENTS.get('repo_dir')
+deps_dir = ARGUMENTS.get('deps_dir')
+
+env["build_library"] = False
+env = SConscript(deps_dir + "/godot-cpp/SConstruct", {"env": env})
+
+doc_data = env.GodotCPPDocData(repo_dir + "/GodotRealityKit/gen/doc_data.gen.cpp", source=Glob(repo_dir + "/doc_classes/*.xml"))
+Default(doc_data)

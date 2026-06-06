@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="RealityPortalMeshInstance3D" inherits="MeshInstance3D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Creates a portal in the shape of the mesh assigned.
+	</brief_description>
+	<description>
+		This maps to RealityKit's [url=https://developer.apple.com/documentation/RealityKit/PortalComponent]PortalComponent[/url].
+
+		The shape of the portal is defined by the mesh on this node.
+		Whereas the world inside the portal is defined by the [b]target_node[/b] assigned, and all its descendants.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_flag" qualifiers="const">
+			<return type="bool" />
+			<param index="0" name="flag" type="int" enum="RealityPortalMeshInstance3D.Flags" />
+			<description>
+				Returns [code]true[/code] if the given [param flag] is set.
+			</description>
+		</method>
+		<method name="set_flag">
+			<return type="void" />
+			<param index="0" name="flag" type="int" enum="RealityPortalMeshInstance3D.Flags" />
+			<param index="1" name="value" type="bool" />
+			<description>
+				Sets or clears the given [param flag].
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="clipping_plane_enabled" type="bool" setter="set_flag" getter="get_flag" default="false">
+			If [code]true[/code], a clipping plane is applied to the portal content at the position and normal defined by [member clipping_plane_position] and [member clipping_plane_normal].
+		</member>
+		<member name="clipping_plane_normal" type="Vector3" setter="set_clipping_plane_normal" getter="get_clipping_plane_normal" default="Vector3(0, 0, 1)">
+			Normal direction of the clipping plane in the portal's local space.
+		</member>
+		<member name="clipping_plane_position" type="Vector3" setter="set_clipping_plane_position" getter="get_clipping_plane_position" default="Vector3(0, 0, 0)">
+			Position of the clipping plane in the portal's local space.
+		</member>
+		<member name="crossing_plane_enabled" type="bool" setter="set_flag" getter="get_flag" default="false">
+			If [code]true[/code], a crossing plane is defined at the position and normal given by [member crossing_plane_position] and [member crossing_plane_normal]. Use with [RealityPortalCrossing3D] to allow objects to visually cross through the portal.
+		</member>
+		<member name="crossing_plane_normal" type="Vector3" setter="set_crossing_plane_normal" getter="get_crossing_plane_normal" default="Vector3(0, 0, 1)">
+			Normal direction of the crossing plane in the portal's local space.
+		</member>
+		<member name="crossing_plane_position" type="Vector3" setter="set_crossing_plane_position" getter="get_crossing_plane_position" default="Vector3(0, 0, 0)">
+			Position of the crossing plane in the portal's local space.
+		</member>
+		<member name="target_node" type="NodePath" setter="set_target_node" getter="get_target_node" default="NodePath(&quot;&quot;)">
+			Root node of all the content inside the portal.
+		</member>
+	</members>
+</class>

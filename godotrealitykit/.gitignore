@@ -1,0 +1,10 @@
+out/
+deps
+addons/
+exports/
+bin/
+xcuserdata/
+.DS_Store
+__pycache__/
+.sconsign.dblite
+*.pyc

@@ -1,0 +1,145 @@
+//===----------------------------------------------------------------------===//
+// Copyright © 2026 Apple Inc.
+//
+// Licensed under the MIT license (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// LICENSE
+//
+//===----------------------------------------------------------------------===//
+
+#import "node_loader.h"
+#import "directional_light_shadow_loader.h"
+#import "node_loaders.h"
+
+using namespace gdrk;
+
+template <typename Derived, std::derived_from<godot::Node> Node>
+void NodeLoaderBase<Derived, Node>::update(const ResourceLoaderSet &p_resource_loaders) {
+	PROFILE_FUNC_SCOPE;
+	Base::for_each_dirty([&](uint32_t p_idx) {
+		godot::Node *node = nodes[p_idx];
+		godot::Node *parent_node = node ? node->get_parent() : nullptr;
+
+		owner->for_each_effect([&]<typename Effect>(HierarchicalEffect<Effect> &effect) {
+			const godot::RID effect_rid = parent_node ? effect.get_rid(parent_node) : godot::RID();
+			static_cast<Derived *>(this)->template _update_effect<Effect>(p_idx, effect_rid);
+		});
+	});
+}
+
+template <typename Derived, std::derived_from<godot::Node> Node>
+void NodeLoader<Derived, Node>::register_entity(uint32_t p_index) {
+	if (node_entities[p_index].registered) {
+		return;
+	}
+
+	node_entities[p_index].registered = true;
+	GodotRealityKit::Entity &entity = node_entities[p_index].entity;
+	entity.materialize();
+
+	GodotRealityKit::Entity root_entity = Base::owner->get_root_entity();
+	entity.setParent(swift::Optional<GodotRealityKit::Entity>::some(root_entity));
+
+	Node *node = Base::nodes[p_index];
+	entity.setName(to_swift_string(node->get_name()));
+	entity.setDebugInfo(typeid(Node).name(), to_swift_string(node->get_path().get_concatenated_names()));
+	entity.setEnabled(node->is_visible_in_tree());
+	visibility_changed_collector.connect(node, p_index);
+	on_transform_changed(p_index, node_transform_states[p_index]);
+
+	if constexpr (Derived::requires_node_entity_mapping) {
+		Base::owner->map_entity(node, entity.id());
+	}
+
+	Base::owner->for_each_effect([&]<typename Effect>(HierarchicalEffect<Effect> &effect) {
+		const godot::RID effect_rid = Base::node_effect_rids_set.template get<Effect>()[p_index];
+		static_cast<Derived *>(this)->template _update_effect<Effect>(p_index, effect_rid);
+	});
+}
+
+template <typename Derived, std::derived_from<godot::Node> Node>
+uint32_t NodeLoader<Derived, Node>::add(Node *p_node) {
+	const uint32_t idx = Base::add(p_node);
+
+	node_transform_states[idx] = godot::Transform3D();
+	if constexpr (!Derived::manages_visibility_state) {
+		mark_visible(idx);
+	}
+	if constexpr (!Derived::manages_entity_registrations) {
+		register_entity(idx);
+	}
+
+	return idx;
+}
+
+template <typename Derived, std::derived_from<godot::Node> Node>
+void NodeLoader<Derived, Node>::unregister_entity(uint32_t p_index, godot::Node *p_node) {
+	if (!node_entities[p_index].registered) {
+		return;
+	}
+
+	if constexpr (Derived::requires_node_entity_mapping) {
+		Base::owner->unmap_entity(p_node);
+	}
+
+	node_entities[p_index].registered = false;
+	node_entities[p_index].entity.dematerialize();
+	visibility_changed_collector.disconnect(p_index);
+}
+
+template <typename Derived, std::derived_from<godot::Node> Node>
+uint32_t NodeLoader<Derived, Node>::remove(Node *p_node) {
+	const uint32_t idx = Base::remove(p_node);
+	unregister_entity(idx, p_node);
+	mark_invisible(idx);
+	return idx;
+}
+
+template <typename Derived, std::derived_from<godot::Node> Node>
+void NodeLoader<Derived, Node>::update(const ResourceLoaderSet &p_resource_loaders) {
+	PROFILE_FUNC_SCOPE;
+
+	Base::update(p_resource_loaders);
+
+	Base::for_each_valid([&](uint32_t p_idx) {
+		godot::Transform3D transform = Base::nodes[p_idx]->get_global_transform();
+		if (node_transform_states[p_idx] != transform) {
+			static_cast<Derived *>(this)->on_transform_changed(p_idx, transform);
+			node_transform_states[p_idx] = transform;
+		}
+	});
+}
+
+template <typename Derived, std::derived_from<godot::Node> Node>
+void NodeLoader<Derived, Node>::on_transform_changed(uint32_t p_idx, const godot::Transform3D &transform) {
+	if (!is_visible(p_idx)) {
+		return;
+	}
+	node_entities[p_idx].entity.setTransform(to_vector3(transform.basis.get_scale()),
+			to_vector4(transform.basis.get_rotation_quaternion()),
+			to_vector3(transform.origin));
+}
+
+template class gdrk::NodeLoader<RealityPortalMeshInstanceLoader, RealityPortalMeshInstance3D>;
+template class gdrk::NodeLoader<MeshInstanceLoader, godot::MeshInstance3D>;
+template class gdrk::NodeLoader<MultiMeshInstanceLoader, godot::MultiMeshInstance3D>;
+template class gdrk::NodeLoader<GridMapLoader, godot::GridMap>;
+template class gdrk::NodeLoader<CPUParticlesLoader, godot::CPUParticles3D>;
+template class gdrk::NodeLoader<CollisionObjectLoader, godot::CollisionObject3D>;
+template class gdrk::NodeLoader<SpriteLoader, godot::Sprite3D>;
+template class gdrk::NodeLoader<CSGShape3DLoader, godot::CSGShape3D>;
+template class gdrk::NodeLoader<DirectionalLightLoader, godot::DirectionalLight3D>;
+template class gdrk::NodeLoader<PointLightLoader, godot::OmniLight3D>;
+template class gdrk::NodeLoader<SpotLightLoader, godot::SpotLight3D>;
+template class gdrk::NodeLoader<LabelLoader, godot::Label3D>;
+template class gdrk::NodeLoader<ImageBasedLightLoader, gdrk::RealityImageBasedLight3D>;
+
+template class gdrk::NodeLoaderBase<CameraLoader, godot::Node3D>;
+template class gdrk::NodeLoaderBase<SkeletonModifierLoader, godot::SkeletonModifier3D>;
+template class gdrk::NodeLoaderBase<RealityHoverEffectLoader, RealityHoverEffect3D>;
+template class gdrk::NodeLoaderBase<RealityPortalCrossingLoader, RealityPortalCrossing3D>;
+template class gdrk::NodeLoaderBase<WorldEnvironmentLoader, godot::WorldEnvironment>;
+template class gdrk::NodeLoaderBase<AnyNodeLoader, godot::Node>;
+template class gdrk::NodeLoaderBase<RealityKitDirectionalLightShadow3DLoader, RealityKitDirectionalLightShadow3D>;

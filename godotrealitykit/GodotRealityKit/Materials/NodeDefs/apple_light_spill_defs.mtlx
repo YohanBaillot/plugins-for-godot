@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<materialx version="1.38">
+    <nodedef name="ND_realitykit_light_spill_diffuse_for_pfrm_content" node="realitykit_light_spill_diffuse_for_pfrm_content" target="realitykit_surface_shader" nodegroup="realitykit">
+        <input name="emitterUV" type="vector2" defaultgeomprop="UV0"/>
+        <input name="attenuationUV" type="vector2" defaultgeomprop="UV1"/>
+        <input name="attenuationUVStart" type="vector2" value="0.0,1.0"/>
+        <input name="attenuationUVEnd" type="vector2" value="1.0,0.0" />
+        <input name="attenuationMap" type="filename" value=""/>
+        <output name="out" type="color4" />
+    </nodedef>
+    <nodedef name="ND_realitykit_light_spill_diffuse" node="realitykit_light_spill_diffuse" target="realitykit_surface_shader" nodegroup="realitykit">
+        <input name="emitterUV" type="vector2" defaultgeomprop="UV0"/>
+        <input name="attenuationUV" type="vector2" defaultgeomprop="UV1"/>
+        <input name="attenuationMap" type="filename" value=""/>
+        <output name="out" type="color4" />
+    </nodedef>
+    <nodedef name="ND_realitykit_light_spill_specular" node="realitykit_light_spill_specular" target="realitykit_surface_shader" nodegroup="realitykit">
+        <input name="reflection_origin" type="vector3" defaultgeomprop="Pworld"/>
+        <input name="unreflected_direction" type="vector3" value="0.0,0.0,1.0"/>
+        <input name="normal" type="vector3" defaultgeomprop="Nworld"/>
+        <input name="antialiasingStrength" type="vector2" value="0.01,0.01"/>
+        <output name="out" type="color4" />
+    </nodedef>
+    <nodedef name="ND_realitykit_light_spill_specular_ggx" node="realitykit_light_spill_specular_ggx" target="realitykit_surface_shader" nodegroup="realitykit" apple_availability="* 9999">
+        <input name="reflection_origin" type="vector3" defaultgeomprop="Pworld"/>
+        <input name="unreflected_direction" type="vector3" value="0.0,0.0,1.0"/>
+        <input name="normal" type="vector3" defaultgeomprop="Nworld"/>
+        <input name="antialiasingStrength" type="vector2" value="0.01,0.01"/>
+        <input name="roughness" type="float" value="0.0"/>
+        <input name="samples" type="integer" value="8" uimin="1" uimax="32"/>
+        <output name="out" type="color4" />
+    </nodedef>
+</materialx>

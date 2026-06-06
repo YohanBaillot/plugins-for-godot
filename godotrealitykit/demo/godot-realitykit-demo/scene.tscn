@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://chohuj15mscxi"]
+
+[ext_resource type="PackedScene" uid="uid://hh86ivhgib8l" path="res://Platforms/platforms.tscn" id="1_ulcgi"]
+[ext_resource type="PackedScene" uid="uid://1ktjtko3rkuq" path="res://Grid/invisible_walls.tscn" id="2_nxogm"]
+[ext_resource type="Material" uid="uid://cef5xvfydibe0" path="res://Grid/grid_material_blue.tres" id="3_3253y"]
+[ext_resource type="PackedScene" uid="uid://codg8e6gfsqt3" path="res://Player/player.tscn" id="4_u3cyc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3cyc"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_m7jmp"]
+sky_material = SubResource("ProceduralSkyMaterial_u3cyc")
+
+[sub_resource type="Environment" id="Environment_y2354"]
+background_mode = 2
+sky = SubResource("Sky_m7jmp")
+glow_enabled = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u3cyc"]
+data = PackedVector3Array(-11, -1, 11, -11, -1, -11, -11, 1, -11, 11, -1, -11, -11, -1, -11, -11, -1, 11, -11, 1, -11, -11, -1, -11, 11, -1, -11, -11, 1, -11, -11, 1, 11, -11, -1, 11, -11, -1, 11, -11, 1, 11, 11, 1, 11, 11, 1, 11, -11, 1, 11, -11, 1, -11, -11, -1, 11, 11, -1, 11, 11, -1, -11, 11, 1, 11, 11, -1, 11, -11, -1, 11, 11, -1, -11, 11, -1, 11, 11, 1, 11, 11, -1, -11, 11, 1, -11, -11, 1, -11, -11, 1, -11, 11, 1, -11, 11, 1, 11, 11, 1, 11, 11, 1, -11, 11, -1, -11)
+
+[node name="Node3D" type="Node3D" unique_id=1109226382]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1309955740]
+environment = SubResource("Environment_y2354")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=200653375]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 4.875717, 15.794445, -6.8226633)
+shadow_enabled = true
+
+[node name="RealityKitDirectionalLightShadow3D" type="RealityKitDirectionalLightShadow3D" parent="DirectionalLight3D" unique_id=1612260082]
+z_far = 27.58
+orthographic_scale = 29.5
+
+[node name="Platforms" parent="." unique_id=773346553 instance=ExtResource("1_ulcgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 9)
+
+[node name="InvisibleWalls" parent="." unique_id=1225219258 instance=ExtResource("2_nxogm")]
+visible = false
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=903267030]
+material_override = ExtResource("3_3253y")
+size = Vector3(22, 2, 22)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=2117101051]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=432055651]
+shape = SubResource("ConcavePolygonShape3D_u3cyc")
+
+[node name="CharacterBody3D" parent="." unique_id=1568327670 instance=ExtResource("4_u3cyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2469654, 1, 7.5169487)
+
+[node name="RealityVolumeCamera3D" type="RealityVolumeCamera3D" parent="." unique_id=87807298]
+size = 22.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="PreviewCamera" type="Camera3D" parent="RealityVolumeCamera3D" unique_id=775268426]
+transform = Transform3D(1, 0, 0, 0, 0.78684705, 0.6171481, 0, -0.6171481, 0.78684705, 0, 5.3223305, 16.195305)
