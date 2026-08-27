@@ -1,0 +1,110 @@
+name: Build visionOS Framework
+
+# Builds GodotRealityKit.framework for visionOS on an Apple Silicon runner
+# (GitHub's macos-15 image) and uploads it as a downloadable artifact.
+#
+# This exists because visionOS Swift/xcodebuild builds require the visionOS
+# platform, which Apple does not ship for Intel Macs. Run this whenever the
+# plugin source changes; drop the resulting framework into the app repo at
+#   godotrealitykit-demo-build/godotrealitykit-demo/dylibs/addons/GodotRealityKit/visionos.template_debug/
+# The app's own CI (Xcode Cloud) then just links the prebuilt binary.
+
+on:
+  workflow_dispatch:
+    inputs:
+      config:
+        description: "Build configuration"
+        type: choice
+        default: debug
+        options: [debug, release]
+  push:
+    branches: [main]
+    paths:
+      - "godotrealitykit/**"
+      - ".github/workflows/build-visionos-framework.yml"
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: godotrealitykit
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Select Xcode with the visionOS 26 SDK
+        run: |
+          # visionOS 27 SDK is not supported by the plugin; prefer Xcode 26.
+          ls /Applications | grep -i '^Xcode' || true
+          if [ -d /Applications/Xcode_26.app ]; then
+            sudo xcode-select -s /Applications/Xcode_26.app
+          fi
+          xcodebuild -version
+          echo "Installed SDKs:"; xcodebuild -showsdks | grep -i 'visionos\|xros' || true
+
+      - name: Ensure visionOS platform + Metal toolchain
+        run: |
+          set -x
+          xcrun --sdk xros --show-sdk-path || xcodebuild -downloadPlatform visionOS
+          # Godot's Metal build needs the Metal toolchain component.
+          xcodebuild -downloadComponent MetalToolchain || \
+            xcodebuild -downloadComponent metalToolchain || true
+
+      - name: Install SCons
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install scons
+          scons --version
+
+      - name: Cache built dependencies (Godot + godot-cpp)
+        uses: actions/cache@v4
+        with:
+          path: godotrealitykit/out/shared_workspace
+          key: gdrk-deps-${{ runner.os }}-${{ hashFiles('godotrealitykit/deps.conf') }}
+          restore-keys: |
+            gdrk-deps-${{ runner.os }}-
+
+      - name: Build dependencies (Godot + godot-cpp for visionOS)
+        run: scons deps -j$(sysctl -n hw.ncpu)
+
+      - name: Build visionOS framework
+        run: |
+          CFG='${{ github.event.inputs.config || 'debug' }}'
+          if [ "$CFG" = "release" ]; then
+            scons framework platform=visionos config=release -j$(sysctl -n hw.ncpu)
+          else
+            scons framework platform=visionos -j$(sysctl -n hw.ncpu)
+          fi
+
+      - name: Locate and verify the framework
+        id: fw
+        run: |
+          set -e
+          BASE=out/addons/GodotRealityKit
+          if [ -d "$BASE/visionos.template_release/GodotRealityKit.framework" ]; then
+            DIR="$BASE/visionos.template_release"
+          else
+            DIR="$BASE/visionos.template_debug"
+          fi
+          FW="$DIR/GodotRealityKit.framework"
+          echo "Framework: $FW"
+          test -d "$FW"
+          # Fail loudly if it came out as a macOS build (the whole point of this job).
+          vtool -show-build "$FW/GodotRealityKit" | tee /tmp/vtool.txt
+          grep -q 'platform VISIONOS' /tmp/vtool.txt || { echo "::error::Framework is not a visionOS build"; exit 1; }
+          echo "dir=godotrealitykit/$DIR" >> "$GITHUB_OUTPUT"
+          # tar to preserve any bundle structure/permissions
+          tar -czf "$RUNNER_TEMP/GodotRealityKit.framework.tgz" -C "$DIR" GodotRealityKit.framework
+
+      - name: Upload framework artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GodotRealityKit-visionos-framework
+          path: ${{ runner.temp }}/GodotRealityKit.framework.tgz
+          if-no-files-found: error
+          retention-days: 30

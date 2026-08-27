@@ -11,8 +11,11 @@ GEN_CONFIG_PATH = $(PROJECT_DIR)/Configurations/build.gen.xcconfig
 GEN_RESOURCE_FILE_LIST_PATH = $(PROJECT_DIR)/Configurations/resources.gen.xcfilelist
 
 // Architectures, platforms, deployment targets
+// visionOS devices are arm64-only; macOS needs both arm64 and x86_64 to
+// match the universal godot-cpp library and run on Intel Macs.
 ARCHS = arm64
-MACOSX_DEPLOYMENT_TARGET = 26.0
+ARCHS[sdk=macosx*] = arm64 x86_64
+MACOSX_DEPLOYMENT_TARGET = 15.0
 ONLY_ACTIVE_ARCH = NO
 SUPPORTED_PLATFORMS = macosx xros
 SUPPORTS_MACCATALYST = NO

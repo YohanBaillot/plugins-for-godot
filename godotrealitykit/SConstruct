@@ -30,6 +30,9 @@ import sys
 import subprocess
 import shutil
 import glob
+import platform
+
+HOST_ARCH = platform.machine()
 
 # ---------------------------------------------------------------------------
 # Environment
@@ -144,7 +147,7 @@ def build_godot(target_env):
         subprocess.check_call(cmd.split(), cwd=gdir)
 
     # Dump extension API
-    editor_bin = os.path.join(gdir, 'bin', 'godot.macos.editor.dev.arm64')
+    editor_bin = os.path.join(gdir, 'bin', 'godot.macos.editor.dev.{}'.format(HOST_ARCH))
     subprocess.check_call([editor_bin, '--dump-extension-api'], cwd=dd)
 
 def build_godot_cpp(target_env):
@@ -166,7 +169,7 @@ def build_godot_cpp(target_env):
             api=ext_api, lto=lto),
         'scons platform=macos target=template_{config} custom_api_file={api} use_hot_reload=no {lto}'.format(
             config=deps_config, api=ext_api, lto=lto),
-        'scons platform=visionos target=template_{config} custom_api_file={api} custom_tools={tools} use_hot_reload=no {lto}'.format(
+        'scons platform=visionos target=template_{config} arch=arm64 custom_api_file={api} custom_tools={tools} use_hot_reload=no {lto}'.format(
             config=deps_config, api=ext_api, tools=tools_dir, lto=lto),
     ]
 
@@ -206,23 +209,6 @@ env.AlwaysBuild(deps_builder)
 # framework: xcodebuild the GodotRealityKit framework
 # ---------------------------------------------------------------------------
 
-def resolve_xcode_destination():
-    if platform_arg == 'macos':
-        return 'generic/platform=macOS'
-    elif platform_arg == 'visionos':
-        return 'generic/platform=visionOS'
-    else:
-        print("ERROR: Unsupported platform '{}'".format(platform_arg))
-        Exit(1)
-
-def resolve_xcode_products_subdir():
-    xcode_config = config_arg.capitalize()
-    if platform_arg == 'macos':
-        return xcode_config
-    elif platform_arg == 'visionos':
-        return '{}-xros'.format(xcode_config)
-    return xcode_config
-
 def build_framework_action(target, source, env):
     # Create deps symlink that the Xcode project expects at $(SRCROOT)/../deps/
     deps_link = os.path.join(REPO_DIR, 'deps')
@@ -233,24 +219,45 @@ def build_framework_action(target, source, env):
         os.remove(deps_link)
     os.symlink(deps_target, deps_link)
 
+    # build.gen.xcconfig pins SDKROOT for the Xcode project; update it to
+    # match the platform being built so xcodebuild resolves the correct
+    # destination (macosx vs xros) instead of always seeing macOS only.
+    sdkroot = 'macosx' if platform_arg == 'macos' else 'xros'
+    gen_xcconfig = os.path.join(REPO_DIR, 'GodotRealityKit', 'Configurations', 'build.gen.xcconfig')
+    with open(gen_xcconfig) as f:
+        lines = f.readlines()
+    with open(gen_xcconfig, 'w') as f:
+        for line in lines:
+            if line.strip().startswith('SDKROOT'):
+                f.write('SDKROOT = {}\n'.format(sdkroot))
+            else:
+                f.write(line)
+
     xcode_config = config_arg.capitalize()
-    destination = resolve_xcode_destination()
     build_dir = os.path.join(SHARED_WORKSPACE, 'xcodebuild', '{}-{}'.format(
         'macOS' if platform_arg == 'macos' else 'visionOS', xcode_config), 'build')
     os.makedirs(build_dir, exist_ok=True)
 
-    subprocess.check_call([
+    # visionOS destination resolution gets stuck showing only macOS as an
+    # available destination for this project/scheme, so that platform uses
+    # `-sdk` instead. But `-sdk` alone builds only the host's native arch
+    # regardless of ARCHS, so macOS (which resolves `-destination` fine)
+    # keeps using `-destination` to get a real universal (arm64+x86_64) build.
+    xcodebuild_args = [
         XCODEBUILD, 'build',
         '-derivedDataPath', build_dir,
         '-project', os.path.join(REPO_DIR, 'GodotRealityKit', 'GodotRealityKit.xcodeproj'),
         '-scheme', 'GodotRealityKit',
         '-configuration', xcode_config,
-        '-destination', destination,
-    ])
+    ]
+    if platform_arg == 'macos':
+        xcodebuild_args += ['-destination', 'generic/platform=macOS']
+    else:
+        xcodebuild_args += ['-sdk', sdkroot]
+    subprocess.check_call(xcodebuild_args)
 
-    products_subdir = resolve_xcode_products_subdir()
     built_framework = os.path.join(
-        build_dir, 'Build', 'Products', products_subdir, 'GodotRealityKit.framework')
+        build_dir, 'Build', 'Products', xcode_config, 'GodotRealityKit.framework')
 
     out_dir = framework_build_dir()
     os.makedirs(out_dir, exist_ok=True)

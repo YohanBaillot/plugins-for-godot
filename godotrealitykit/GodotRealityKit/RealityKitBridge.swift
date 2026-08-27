@@ -58,6 +58,14 @@ extension RealityView {
 
         let camera = Unmanaged<RealityKit.Entity>.fromOpaque(rawCameraPointer).takeRetainedValue()
         if let cameraComponent = camera.components[PerspectiveCameraComponent.self] {
+            // ProjectiveTransform3DFloat/Angle2DFloat/.inverse require macOS 26.0+.
+            // Below that, perspective-camera ray casting (click/hover picking
+            // in the local macOS preview) is simply unavailable; the scene
+            // itself still renders fine.
+            guard #available(macOS 26.0, *) else {
+                return nil
+            }
+
             let projectiveTransform = ProjectiveTransform3DFloat(
                 fovY: Angle2DFloat(degrees: cameraComponent.fieldOfViewInDegrees),
                 aspectRatio: Float(size.width / size.height),

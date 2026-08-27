@@ -685,9 +685,23 @@ public struct LowLevelInstanceData: @unchecked Sendable {
 }
 
 public struct HoverEffectGroupID: @unchecked Sendable {
-    let value = HoverEffectComponent.GroupID()
-    
-    public init() {}
+    // HoverEffectComponent.GroupID requires macOS/visionOS 26.0+. Boxed as
+    // Any? so this struct itself has no availability requirement; callers on
+    // older OSes just get a group id that's always empty (see `value` below).
+    private let boxedValue: Any?
+
+    public init() {
+        if #available(macOS 26.0, *) {
+            boxedValue = HoverEffectComponent.GroupID()
+        } else {
+            boxedValue = nil
+        }
+    }
+
+    @available(macOS 26.0, *)
+    var value: HoverEffectComponent.GroupID? {
+        boxedValue as? HoverEffectComponent.GroupID
+    }
 }
 
 public struct VolumeCameraComponent: Component, Codable {
@@ -910,16 +924,27 @@ public struct Entity: @unchecked Sendable {
     
     public mutating func setHoverEffect(groupID: HoverEffectGroupID?, color: GDRKColorRef?, strength: Float, spotlight: Bool) {
         MainActor.assumeIsolated{
-            if let groupIDValue = groupID?.value {                let hoverEffect: HoverEffectComponent.HoverEffect
+            guard groupID != nil else {
+                self.value.components.remove(HoverEffectComponent.self)
+                for child in self.value.children {
+                    child.components.remove(HoverEffectComponent.self)
+                }
+                return
+            }
+
+            // SpotlightHoverEffectStyle's nil-color default produces no
+            // visible spotlight on dark surfaces, so fall back to white
+            // when the user hasn't enabled an explicit color.
+            #if os(macOS)
+            let spotlightColor = color ?? NSColor.white
+            #else
+            let spotlightColor = color ?? UIColor.white
+            #endif
+
+            let hoverEffect: HoverEffectComponent.HoverEffect
+            if #available(macOS 26.0, *), let groupIDValue = groupID?.value {
+                // Grouped hover effect (macOS/visionOS 26.0+).
                 if spotlight {
-                    // SpotlightHoverEffectStyle's nil-color default produces no
-                    // visible spotlight on dark surfaces, so fall back to white
-                    // when the user hasn't enabled an explicit color.
-                    #if os(macOS)
-                    let spotlightColor = color ?? NSColor.white
-                    #else
-                    let spotlightColor = color ?? UIColor.white
-                    #endif
                     hoverEffect = HoverEffectComponent.HoverEffect.spotlight(
                         HoverEffectComponent.SpotlightHoverEffectStyle(color: spotlightColor, strength: strength),
                             groupID: groupIDValue)
@@ -928,16 +953,21 @@ public struct Entity: @unchecked Sendable {
                         HoverEffectComponent.HighlightHoverEffectStyle(color: color, strength: strength),
                             groupID: groupIDValue)
                 }
-                
-                self.value.components.set(HoverEffectComponent(hoverEffect))
-                for child in self.value.children {
-                    child.components.set(HoverEffectComponent(hoverEffect))
-                }
             } else {
-                self.value.components.remove(HoverEffectComponent.self)
-                for child in self.value.children {
-                    child.components.remove(HoverEffectComponent.self)
+                // Below macOS/visionOS 26.0: ungrouped hover effect (GroupID
+                // API unavailable; the effect itself still works).
+                if spotlight {
+                    hoverEffect = HoverEffectComponent.HoverEffect.spotlight(
+                        HoverEffectComponent.SpotlightHoverEffectStyle(color: spotlightColor, strength: strength))
+                } else {
+                    hoverEffect = HoverEffectComponent.HoverEffect.highlight(
+                        HoverEffectComponent.HighlightHoverEffectStyle(color: color, strength: strength))
                 }
+            }
+
+            self.value.components.set(HoverEffectComponent(hoverEffect))
+            for child in self.value.children {
+                child.components.set(HoverEffectComponent(hoverEffect))
             }
         }
     }
