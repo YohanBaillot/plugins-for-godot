@@ -39,11 +39,15 @@ jobs:
 
       - name: Select Xcode with the visionOS 26 SDK
         run: |
-          # visionOS 27 SDK is not supported by the plugin; prefer Xcode 26.
-          ls /Applications | grep -i '^Xcode' || true
-          if [ -d /Applications/Xcode_26.app ]; then
-            sudo xcode-select -s /Applications/Xcode_26.app
-          fi
+          # The plugin builds against the visionOS 26 SDK (Xcode 26.x); the
+          # runner's default is Xcode 16.4, whose visionOS SDK lacks APIs the
+          # Godot fork uses (e.g. CompositorLayer.onWorldRecenter). visionOS 27
+          # SDK is not supported, so pick the newest Xcode 26.x.
+          ls -d /Applications/Xcode_26* || true
+          XCAPP=$(ls -d /Applications/Xcode_26.[0-9]*.app 2>/dev/null | sort -V | tail -1)
+          [ -n "$XCAPP" ] || XCAPP=/Applications/Xcode_26.3.app
+          echo "Selecting $XCAPP"
+          sudo xcode-select -s "$XCAPP/Contents/Developer"
           xcodebuild -version
           echo "Installed SDKs:"; xcodebuild -showsdks | grep -i 'visionos\|xros' || true
 
