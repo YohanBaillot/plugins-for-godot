@@ -24,9 +24,39 @@ on:
       - ".github/workflows/build-visionos-framework.yml"
 
 jobs:
-  build:
+  # Fast fail: catch environment problems (wrong Xcode, missing visionOS SDK)
+  # in under a minute instead of ~35 min into the Godot compile.
+  preflight:
     runs-on: macos-15
-    timeout-minutes: 120
+    outputs:
+      xcode: ${{ steps.pick.outputs.xcapp }}
+    steps:
+      - name: Pick and validate Xcode 26.x + visionOS SDK
+        id: pick
+        run: |
+          set -e
+          XCAPP=$(ls -d /Applications/Xcode_26.[0-9]*.app 2>/dev/null | sort -V | tail -1)
+          [ -n "$XCAPP" ] || { echo "::error::No Xcode 26.x on runner"; exit 1; }
+          sudo xcode-select -s "$XCAPP/Contents/Developer"
+          echo "Using: $XCAPP"
+          xcodebuild -version
+          V=$(xcodebuild -version | awk 'NR==1{print $2}')
+          case "$V" in 26.*) ;; *) echo "::error::Xcode $V is not 26.x"; exit 1;; esac
+          xcrun --sdk xros --show-sdk-path || { echo "::error::visionOS SDK missing"; exit 1; }
+          # Compile a tiny visionOS Swift file that uses a visionOS-26-era API,
+          # mirroring what the Godot fork needs (CompositorServices).
+          cat > /tmp/probe.swift <<'EOF'
+          import CompositorServices
+          @available(visionOS 26.0, *)
+          func probe(_ l: CompositorLayer) { _ = l.onWorldRecenter }
+          EOF
+          xcrun --sdk xros swiftc -typecheck -target arm64-apple-xros26.0 /tmp/probe.swift
+          echo "xcapp=$XCAPP" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: preflight
+    runs-on: macos-15
+    timeout-minutes: 150
     defaults:
       run:
         working-directory: godotrealitykit
@@ -37,25 +67,15 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Select Xcode with the visionOS 26 SDK
+      - name: Select Xcode
         run: |
-          # The plugin builds against the visionOS 26 SDK (Xcode 26.x); the
-          # runner's default is Xcode 16.4, whose visionOS SDK lacks APIs the
-          # Godot fork uses (e.g. CompositorLayer.onWorldRecenter). visionOS 27
-          # SDK is not supported, so pick the newest Xcode 26.x.
-          ls -d /Applications/Xcode_26* || true
-          XCAPP=$(ls -d /Applications/Xcode_26.[0-9]*.app 2>/dev/null | sort -V | tail -1)
-          [ -n "$XCAPP" ] || XCAPP=/Applications/Xcode_26.3.app
-          echo "Selecting $XCAPP"
-          sudo xcode-select -s "$XCAPP/Contents/Developer"
+          sudo xcode-select -s '${{ needs.preflight.outputs.xcode }}/Contents/Developer'
           xcodebuild -version
-          echo "Installed SDKs:"; xcodebuild -showsdks | grep -i 'visionos\|xros' || true
 
       - name: Ensure visionOS platform + Metal toolchain
         run: |
           set -x
           xcrun --sdk xros --show-sdk-path || xcodebuild -downloadPlatform visionOS
-          # Godot's Metal build needs the Metal toolchain component.
           xcodebuild -downloadComponent MetalToolchain || \
             xcodebuild -downloadComponent metalToolchain || true
 
@@ -64,16 +84,34 @@ jobs:
           brew install scons
           scons --version
 
-      - name: Cache built dependencies (Godot + godot-cpp)
+      - name: Restore built dependencies (Godot + godot-cpp)
+        id: depcache
         uses: actions/cache@v4
         with:
           path: godotrealitykit/out/shared_workspace
-          key: gdrk-deps-${{ runner.os }}-${{ hashFiles('godotrealitykit/deps.conf') }}
+          key: gdrk-deps-v2-${{ runner.os }}-${{ hashFiles('godotrealitykit/deps.conf') }}
           restore-keys: |
-            gdrk-deps-${{ runner.os }}-
+            gdrk-deps-v2-${{ runner.os }}-
 
       - name: Build dependencies (Godot + godot-cpp for visionOS)
         run: scons deps -j$(sysctl -n hw.ncpu)
+
+      - name: Prune workspace so it fits GitHub's 10 GB cache limit
+        if: steps.depcache.outputs.cache-hit != 'true'
+        run: |
+          set -x
+          WS=out/shared_workspace
+          du -sh "$WS" || true
+          # Cloned dep repos: keep the source + built libs, drop git history.
+          find "$WS" -type d -name .git -prune -exec rm -rf {} + || true
+          # Godot object files are already archived into libgodot.*.a — not
+          # needed by the framework's xcodebuild step.
+          find "$WS" -type d -name obj -path '*godot*/bin/*' -prune -exec rm -rf {} + || true
+          find "$WS" -type f -name '*.o' -delete || true
+          # xcodebuild derived-data intermediates for the deps stage.
+          find "$WS" -type d -name 'Intermediates.noindex' -prune -exec rm -rf {} + || true
+          find "$WS" -type d -name 'ModuleCache.noindex' -prune -exec rm -rf {} + || true
+          du -sh "$WS" || true
 
       - name: Build visionOS framework
         run: |
@@ -97,11 +135,8 @@ jobs:
           FW="$DIR/GodotRealityKit.framework"
           echo "Framework: $FW"
           test -d "$FW"
-          # Fail loudly if it came out as a macOS build (the whole point of this job).
           vtool -show-build "$FW/GodotRealityKit" | tee /tmp/vtool.txt
           grep -q 'platform VISIONOS' /tmp/vtool.txt || { echo "::error::Framework is not a visionOS build"; exit 1; }
-          echo "dir=godotrealitykit/$DIR" >> "$GITHUB_OUTPUT"
-          # tar to preserve any bundle structure/permissions
           tar -czf "$RUNNER_TEMP/GodotRealityKit.framework.tgz" -C "$DIR" GodotRealityKit.framework
 
       - name: Upload framework artifact

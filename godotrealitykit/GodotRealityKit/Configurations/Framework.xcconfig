@@ -19,7 +19,11 @@ MODULEMAP_FILE = $(PROJECT_DIR)/GodotRealityKit.modulemap
 MODULE_VERIFIER_SUPPORTED_LANGUAGES = objective-c objective-c++
 MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = gnu17 gnu++20
 
-OTHER_CPLUSPLUSFLAGS = $(OTHER_CFLAGS)
+// -Wno-c++11-narrowing: clang's #embed implementation (used for the baked-in
+// boot splash PNG in extension.mm) emits byte 0x89 as the signed value -119,
+// which trips the narrowing check when initializing an `unsigned char[]`.
+// Harmless for a raw image blob; suppress so the visionOS framework builds.
+OTHER_CPLUSPLUSFLAGS = $(OTHER_CFLAGS) -Wno-c++11-narrowing
 
 PRODUCT_BUNDLE_IDENTIFIER = com.example.GodotRealityKit
 PRODUCT_NAME = $(TARGET_NAME:c99extidentifier)
