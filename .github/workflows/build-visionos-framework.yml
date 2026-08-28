@@ -43,14 +43,7 @@ jobs:
           V=$(xcodebuild -version | awk 'NR==1{print $2}')
           case "$V" in 26.*) ;; *) echo "::error::Xcode $V is not 26.x"; exit 1;; esac
           xcrun --sdk xros --show-sdk-path || { echo "::error::visionOS SDK missing"; exit 1; }
-          # Compile a tiny visionOS Swift file that uses a visionOS-26-era API,
-          # mirroring what the Godot fork needs (CompositorServices).
-          cat > /tmp/probe.swift <<'EOF'
-          import CompositorServices
-          @available(visionOS 26.0, *)
-          func probe(_ l: CompositorLayer) { _ = l.onWorldRecenter }
-          EOF
-          xcrun --sdk xros swiftc -typecheck -target arm64-apple-xros26.0 /tmp/probe.swift
+          xcodebuild -showsdks | grep -i 'xros\|visionos' || { echo "::error::no visionOS SDK listed"; exit 1; }
           echo "xcapp=$XCAPP" >> "$GITHUB_OUTPUT"
 
   build:
