@@ -79,14 +79,15 @@ jobs:
 
       - name: Restore built dependencies (Godot + godot-cpp)
         id: depcache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: godotrealitykit/out/shared_workspace
-          key: gdrk-deps-v2-${{ runner.os }}-${{ hashFiles('godotrealitykit/deps.conf') }}
+          key: gdrk-deps-v3-${{ runner.os }}-${{ hashFiles('godotrealitykit/deps.conf') }}
           restore-keys: |
-            gdrk-deps-v2-${{ runner.os }}-
+            gdrk-deps-v3-${{ runner.os }}-
 
       - name: Build dependencies (Godot + godot-cpp for visionOS)
+        if: steps.depcache.outputs.cache-hit != 'true'
         run: scons deps -j$(sysctl -n hw.ncpu)
 
       - name: Prune workspace so it fits GitHub's 10 GB cache limit
@@ -105,6 +106,15 @@ jobs:
           find "$WS" -type d -name 'Intermediates.noindex' -prune -exec rm -rf {} + || true
           find "$WS" -type d -name 'ModuleCache.noindex' -prune -exec rm -rf {} + || true
           du -sh "$WS" || true
+
+      # Save the pruned deps immediately, before the framework step, so a
+      # failure there never forces another ~50-min deps rebuild.
+      - name: Save built dependencies
+        if: steps.depcache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: godotrealitykit/out/shared_workspace
+          key: gdrk-deps-v3-${{ runner.os }}-${{ hashFiles('godotrealitykit/deps.conf') }}
 
       - name: Build visionOS framework
         run: |

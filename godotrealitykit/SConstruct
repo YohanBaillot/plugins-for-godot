@@ -256,8 +256,18 @@ def build_framework_action(target, source, env):
         xcodebuild_args += ['-sdk', sdkroot]
     subprocess.check_call(xcodebuild_args)
 
-    built_framework = os.path.join(
-        build_dir, 'Build', 'Products', xcode_config, 'GodotRealityKit.framework')
+    # xcodebuild appends $EFFECTIVE_PLATFORM_NAME to the configuration folder,
+    # so a real visionOS build lands in Products/Debug-xros, not Products/Debug.
+    # (On a Mac without the visionOS toolchain, `-sdk xros` silently produced a
+    # macOS build in plain Products/Debug, which is why this used to work.)
+    products_root = os.path.join(build_dir, 'Build', 'Products')
+    _candidates = [
+        os.path.join(products_root, xcode_config + '-xros', 'GodotRealityKit.framework'),
+        os.path.join(products_root, xcode_config, 'GodotRealityKit.framework'),
+    ]
+    _candidates += sorted(glob.glob(
+        os.path.join(products_root, xcode_config + '*', 'GodotRealityKit.framework')))
+    built_framework = next((p for p in _candidates if os.path.isdir(p)), _candidates[0])
 
     out_dir = framework_build_dir()
     os.makedirs(out_dir, exist_ok=True)
