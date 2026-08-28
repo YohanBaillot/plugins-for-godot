@@ -129,15 +129,13 @@ jobs:
         id: fw
         run: |
           set -e
-          BASE=out/addons/GodotRealityKit
-          if [ -d "$BASE/visionos.template_release/GodotRealityKit.framework" ]; then
-            DIR="$BASE/visionos.template_release"
-          else
-            DIR="$BASE/visionos.template_debug"
-          fi
-          FW="$DIR/GodotRealityKit.framework"
+          # `scons framework` writes to out/workspace/build/visionOS/<Config>/;
+          # `scons addon` would also stage it under out/addons/. Search both.
+          FW=$(find out/workspace/build/visionOS out/addons -type d \
+                 -name GodotRealityKit.framework 2>/dev/null | head -1)
+          [ -n "$FW" ] || { echo "::error::GodotRealityKit.framework not found"; find out -name 'GodotRealityKit.framework' -type d; exit 1; }
+          DIR=$(dirname "$FW")
           echo "Framework: $FW"
-          test -d "$FW"
           vtool -show-build "$FW/GodotRealityKit" | tee /tmp/vtool.txt
           grep -q 'platform VISIONOS' /tmp/vtool.txt || { echo "::error::Framework is not a visionOS build"; exit 1; }
           tar -czf "$RUNNER_TEMP/GodotRealityKit.framework.tgz" -C "$DIR" GodotRealityKit.framework
